@@ -25,15 +25,18 @@ export function Author() {
 
           <div className="text-foreground-muted mt-8 space-y-5 text-lg leading-8">
             <p>
-              Technical Trainer in B2B Tech since 2014, transitioning to Sr. Customer Success
+              Technical Trainer in B2B Tech since 2020, transitioning to Sr. Customer Success
               Architect in 2025. He has trained product teams around the world &mdash; from VoIP at
               scale, through SaaS onboarding, to product analytics &mdash; and helped renew
               million-dollar accounts through training alone.
             </p>
             <p>
-              Before tech, he spent years in public speaking; he was named Young Peace Ambassador of
-              the UNESCO Club of Florence. This guide is the result of two years of writing,
-              hundreds of CSATs, and a wife who patiently watched it happen on weekends.
+              Public speaking has been a thread for two decades &mdash; from high school as Young
+              Peace Ambassador of the UNESCO Club of Florence, to commercial diplomacy at the
+              Italian Chamber of Commerce in Rosario, Argentina, and years travelling as a Product
+              Trainer for an Italian corporation before settling into tech. This guide is the result
+              of two years of writing, hundreds of CSATs, and a wife who patiently watched it happen
+              on weekends.
             </p>
           </div>
 
@@ -44,7 +47,7 @@ export function Author() {
             </div>
             <div>
               <dt className="text-foreground-subtle">In tech training</dt>
-              <dd className="text-foreground mt-1 text-2xl font-semibold">10+</dd>
+              <dd className="text-foreground mt-1 text-2xl font-semibold">6+</dd>
             </div>
             <div>
               <dt className="text-foreground-subtle">Pages</dt>
