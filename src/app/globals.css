@@ -1,26 +1,59 @@
 @import "tailwindcss";
 
+/* Brand palette
+ * The CrackVILT site is dark-first to match the brand assets (logo on dark,
+ * OG image gradient). Sections that need to be light use explicit overrides.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0e1c;
+  --background-elevated: #0f1424;
+  --foreground: #e6ebf5;
+  --foreground-muted: #99a4be;
+  --foreground-subtle: #6b7793;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-soft: rgba(255, 255, 255, 0.12);
+  --brand-cyan: #06b6d4;
+  --brand-cyan-bright: #22d3ee;
+  --brand-emerald: #10b981;
+  --brand-emerald-bright: #34d399;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
   --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-soft: var(--border-soft);
+  --color-brand-cyan: var(--brand-cyan);
+  --color-brand-cyan-bright: var(--brand-cyan-bright);
+  --color-brand-emerald: var(--brand-emerald);
+  --color-brand-emerald-bright: var(--brand-emerald-bright);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle radial glow used on hero background. Kept here so it composes with
+ * Tailwind utilities and doesn't bloat each page that uses it. */
+.bg-hero-glow {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(34, 211, 238, 0.08), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(16, 185, 129, 0.06), transparent 70%),
+    var(--background);
+}
+
+/* Brand wordmark gradient. Used on accent words in headlines. */
+.text-brand-gradient {
+  background: linear-gradient(90deg, var(--brand-emerald-bright) 0%, var(--brand-cyan-bright) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
