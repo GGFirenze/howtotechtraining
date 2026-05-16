@@ -34,9 +34,8 @@ export function Author() {
               Public speaking has been a thread for two decades &mdash; from high school as Young
               Peace Ambassador of the UNESCO Club of Florence, to commercial diplomacy at the
               Italian Chamber of Commerce in Rosario, Argentina, and years travelling as a Product
-              Trainer for an Italian corporation before settling into tech. This guide is the result
-              of two years of writing, hundreds of CSATs, and a wife who patiently watched it happen
-              on weekends.
+              Trainer for an Italian corporation before settling into tech. This guide distils two
+              years of writing and hundreds of real customer CSATs into one practical playbook.
             </p>
           </div>
 
