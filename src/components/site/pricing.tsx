@@ -26,7 +26,7 @@ export function Pricing() {
 
         <div className="border-border-soft bg-background mx-auto mt-12 max-w-md rounded-3xl border p-8 shadow-[0_0_60px_rgba(34,211,238,0.06)] sm:p-10">
           <div className="flex items-baseline gap-2">
-            <span className="text-foreground text-5xl font-bold">£39</span>
+            <span className="text-foreground text-5xl font-bold">£29</span>
             <span className="text-foreground-muted text-base font-medium">one-time</span>
           </div>
           <p className="text-foreground-subtle mt-2 text-sm">

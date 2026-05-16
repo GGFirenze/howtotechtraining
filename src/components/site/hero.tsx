@@ -23,7 +23,7 @@ export function Hero() {
             href="#pricing"
             className="bg-foreground text-background inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold transition-transform hover:scale-[1.02] active:scale-[0.99]"
           >
-            Get the guide &mdash; £39
+            Get the guide &mdash; £29
           </a>
           <a
             href="#whats-inside"
