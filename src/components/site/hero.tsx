@@ -34,7 +34,7 @@ export function Hero() {
         </div>
 
         <p className="text-foreground-subtle mt-8 text-xs">
-          One-time payment · Instant PDF download · No subscription · Free updates
+          One-time payment · Instant PDF download · No subscription
         </p>
       </div>
     </section>
