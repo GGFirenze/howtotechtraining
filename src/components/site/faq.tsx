@@ -23,7 +23,7 @@ const QUESTIONS: QA[] = [
   },
   {
     q: "What if it's not what I expected?",
-    a: "Email [email protected] within 14 days of purchase and we'll process a refund. No questions asked.",
+    a: "The guide is delivered as an immediate digital download, so all sales are final once the file is delivered. The table of contents, chapter excerpts, and author bio on this page are there so you can decide whether the content fits before you buy — please read them carefully. If something is technically wrong — broken link, corrupt file, double charge — email [email protected] and I'll fix it.",
   },
   {
     q: "Do you offer team licences?",
