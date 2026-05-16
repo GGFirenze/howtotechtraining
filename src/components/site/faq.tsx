@@ -15,7 +15,7 @@ const QUESTIONS: QA[] = [
   },
   {
     q: "What format do I get?",
-    a: "An instant PDF download (130 pages). Readable on any device — no DRM, no app required.",
+    a: "An instant PDF download (130 pages). Readable on any device. Free updates to future revisions of this edition.",
   },
   {
     q: "Can I expense it through my company?",

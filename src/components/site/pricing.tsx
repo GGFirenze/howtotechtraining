@@ -4,6 +4,7 @@ const FEATURES = [
   "Ready-to-use email & Slack templates",
   "POC discovery-call framework",
   "Audience design and engagement playbook",
+  "Free updates to future revisions",
   "One-time payment — no subscription",
 ];
 
