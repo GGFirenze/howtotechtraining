@@ -1,32 +1,38 @@
 "use client";
 
 import * as amplitude from "@amplitude/analytics-browser";
+import { plugin as engagementPlugin } from "@amplitude/engagement-browser";
+import { sessionReplayPlugin } from "@amplitude/plugin-session-replay-browser";
 
 import {
-  AMPLITUDE_DEFAULT_TRACKING,
+  AMPLITUDE_AUTOCAPTURE,
+  AMPLITUDE_FETCH_REMOTE_CONFIG,
   AMPLITUDE_FLUSH_INTERVAL_MS,
   AMPLITUDE_SERVER_ZONE,
+  AMPLITUDE_SESSION_REPLAY_SAMPLE_RATE,
 } from "./config";
 
 let initialized = false;
 
 /**
- * Initialise the Amplitude browser SDK.
+ * Initialise the Amplitude browser SDK with the configured plugins.
  *
- * Idempotent: safe to call multiple times. Subsequent calls are no-ops.
+ * Idempotent: subsequent calls are no-ops, so it is safe to render the
+ * <AmplitudeInit /> component multiple times or remount during HMR.
  *
  * Behaviour:
- * - On the server (no `window`) it returns immediately.
- * - When `NEXT_PUBLIC_AMPLITUDE_API_KEY` is missing it logs a single warning
- *   in development and otherwise stays silent — the rest of the app keeps
- *   working, just without analytics.
- * - When the key is present, the SDK is initialised with EU server zone,
- *   sessions on, page views and attribution off (we will track those
- *   manually with curated properties).
+ * - Returns immediately on the server (no `window`).
+ * - When `NEXT_PUBLIC_AMPLITUDE_API_KEY` is missing, logs a single dev
+ *   warning and stays silent — the rest of the app keeps working without
+ *   analytics.
+ * - When the key is present, registers the Session Replay and Engagement
+ *   plugins *before* `init()` (the SDK requires plugins to be added prior
+ *   to init for autocapture and remote config to apply to them) and then
+ *   initialises with the project's autocapture flags.
  *
- * Consent gating: this function is *not* gated by a consent banner yet.
- * That arrives with the cookie banner in M9. Until then, init runs on
- * every page load.
+ * Consent gating: this function is *not* yet gated by a cookie banner.
+ * Banner integration arrives with M9 (compliance). Until then, init runs
+ * whenever the API key is present.
  */
 export function initAmplitudeClient(): void {
   if (initialized) return;
@@ -40,9 +46,13 @@ export function initAmplitudeClient(): void {
     return;
   }
 
+  amplitude.add(sessionReplayPlugin({ sampleRate: AMPLITUDE_SESSION_REPLAY_SAMPLE_RATE }));
+  amplitude.add(engagementPlugin());
+
   amplitude.init(apiKey, {
     serverZone: AMPLITUDE_SERVER_ZONE,
-    defaultTracking: AMPLITUDE_DEFAULT_TRACKING,
+    autocapture: AMPLITUDE_AUTOCAPTURE,
+    fetchRemoteConfig: AMPLITUDE_FETCH_REMOTE_CONFIG,
     flushIntervalMillis: AMPLITUDE_FLUSH_INTERVAL_MS,
   });
 
