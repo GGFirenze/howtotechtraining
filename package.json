@@ -13,6 +13,8 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@amplitude/analytics-browser": "^2.42.3",
+    "@amplitude/analytics-node": "^1.5.57",
     "next": "16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4"
