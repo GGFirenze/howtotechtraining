@@ -1,3 +1,9 @@
+"use client";
+
+import { getAmplitudeDeviceId } from "@/lib/analytics/client";
+import { trackEvent } from "@/lib/analytics/events";
+import { buildCheckoutUrl, isCheckoutConfigured } from "@/lib/lemon-squeezy";
+
 const FEATURES = [
   "130-page PDF guide, instant download",
   "8 chapters from mindset to follow-up",
@@ -9,6 +15,23 @@ const FEATURES = [
 ];
 
 export function Pricing() {
+  // Inline env access so Next.js statically substitutes it on the client.
+  // When the LS shop is not yet activated we render the CTA in its
+  // "Checkout opens at launch" disabled state.
+  const checkoutLive = isCheckoutConfigured();
+
+  const handleBuyClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    trackEvent("Get Guide Clicked", { click_location: "pricing" });
+
+    // Build the URL just-in-time so we capture the freshest device_id —
+    // the SDK might still have been initialising during the render pass.
+    const url = buildCheckoutUrl({ device_id: getAmplitudeDeviceId() });
+    if (url) {
+      window.location.href = url;
+    }
+  };
+
   return (
     <section
       id="pricing"
@@ -24,7 +47,7 @@ export function Pricing() {
           </h2>
         </div>
 
-        <div className="border-border-soft bg-background mx-auto mt-12 max-w-md rounded-3xl border p-8 shadow-[0_0_60px_rgba(34,211,238,0.06)] sm:p-10">
+        <div className="bg-background border-border-soft mx-auto mt-12 max-w-md rounded-3xl border p-8 shadow-[0_0_60px_rgba(34,211,238,0.06)] sm:p-10">
           <div className="flex items-baseline gap-2">
             <span className="text-foreground text-5xl font-bold">£29</span>
             <span className="text-foreground-muted text-base font-medium">one-time</span>
@@ -55,15 +78,25 @@ export function Pricing() {
             ))}
           </ul>
 
-          <button
-            type="button"
-            disabled
-            aria-disabled="true"
-            className="bg-foreground/30 text-background mt-10 inline-flex h-12 w-full items-center justify-center rounded-full px-7 text-sm font-semibold opacity-60"
-            title="Checkout opens at launch"
-          >
-            Checkout opens at launch
-          </button>
+          {checkoutLive ? (
+            <button
+              type="button"
+              onClick={handleBuyClick}
+              className="bg-foreground text-background hover:bg-foreground-muted mt-10 inline-flex h-12 w-full items-center justify-center rounded-full px-7 text-sm font-semibold transition-colors"
+            >
+              Buy now &mdash; £29
+            </button>
+          ) : (
+            <button
+              type="button"
+              disabled
+              aria-disabled="true"
+              className="bg-foreground/30 text-background mt-10 inline-flex h-12 w-full items-center justify-center rounded-full px-7 text-sm font-semibold opacity-60"
+              title="Checkout opens at launch"
+            >
+              Checkout opens at launch
+            </button>
+          )}
 
           <p className="text-foreground-subtle mt-3 text-center text-xs">
             Powered by Lemon Squeezy &mdash; tax and invoices handled for you.
