@@ -14,8 +14,14 @@ import * as amplitude from "@amplitude/analytics-browser";
  * shape and `trackEvent` automatically picks it up.
  */
 
-/** Where on the page the user interacted with a navigational element. */
-export type ClickLocation = "hero_section" | "nav_menu";
+/**
+ * Where on the page the user interacted with a navigational element.
+ *
+ * - hero_section: the hero CTAs at the top of the page
+ * - nav_menu: the header nav at the top right
+ * - footer: the link columns at the bottom of the page (Product section)
+ */
+export type ClickLocation = "hero_section" | "nav_menu" | "footer";
 
 /** Discriminated map: event name → required property shape. */
 export type EventMap = {

@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
+
 import { Logo } from "@/components/logo";
+import { trackEvent } from "@/lib/analytics/events";
 
 export function Footer() {
   return (
@@ -24,6 +28,7 @@ export function Footer() {
               <li>
                 <a
                   href="#whats-inside"
+                  onClick={() => trackEvent("Whats Inside Clicked", { click_location: "footer" })}
                   className="text-foreground-muted hover:text-foreground transition-colors"
                 >
                   What&apos;s inside
@@ -32,6 +37,7 @@ export function Footer() {
               <li>
                 <a
                   href="#author"
+                  onClick={() => trackEvent("Author Clicked", { click_location: "footer" })}
                   className="text-foreground-muted hover:text-foreground transition-colors"
                 >
                   About the author
@@ -40,6 +46,7 @@ export function Footer() {
               <li>
                 <a
                   href="#pricing"
+                  onClick={() => trackEvent("Get Guide Clicked", { click_location: "footer" })}
                   className="text-foreground-muted hover:text-foreground transition-colors"
                 >
                   Pricing
@@ -48,6 +55,7 @@ export function Footer() {
               <li>
                 <a
                   href="#faq"
+                  onClick={() => trackEvent("FAQ Clicked", { click_location: "footer" })}
                   className="text-foreground-muted hover:text-foreground transition-colors"
                 >
                   FAQ
