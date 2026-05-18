@@ -1,3 +1,7 @@
+"use client";
+
+import { trackEvent } from "@/lib/analytics/events";
+
 type QA = { q: string; a: string };
 
 const QUESTIONS: QA[] = [
@@ -46,7 +50,19 @@ export function Faq() {
 
         <div className="divide-border-subtle border-border-subtle mt-12 divide-y border-y">
           {QUESTIONS.map((qa) => (
-            <details key={qa.q} className="group py-6">
+            <details
+              key={qa.q}
+              className="group py-6"
+              onToggle={(event) => {
+                // Fire only on open, not on close — keeps the event volume
+                // honest (one event per user-initiated expansion) and matches
+                // the "Quando l'utente clicca sul + per esplorare le FAQ"
+                // semantics of the taxonomy.
+                if (event.currentTarget.open) {
+                  trackEvent("FAQ Expanded", { faq_name: qa.q });
+                }
+              }}
+            >
               <summary className="text-foreground hover:text-brand-cyan-bright flex cursor-pointer list-none items-start justify-between gap-6 text-left text-base font-semibold transition-colors sm:text-lg">
                 <span className="flex-1">{qa.q}</span>
                 <svg

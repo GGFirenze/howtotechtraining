@@ -1,3 +1,7 @@
+"use client";
+
+import { trackEvent } from "@/lib/analytics/events";
+
 export function Hero() {
   return (
     <section className="bg-hero-glow relative overflow-hidden px-6 pt-36 pb-24 sm:px-10 sm:pt-44 sm:pb-32">
@@ -21,12 +25,14 @@ export function Hero() {
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
           <a
             href="#pricing"
+            onClick={() => trackEvent("Get Guide Clicked", { click_location: "hero_section" })}
             className="bg-foreground text-background inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold transition-transform hover:scale-[1.02] active:scale-[0.99]"
           >
             Get the guide &mdash; £29
           </a>
           <a
             href="#whats-inside"
+            onClick={() => trackEvent("Whats Inside Clicked", { click_location: "hero_section" })}
             className="border-border-soft text-foreground hover:bg-background-elevated inline-flex h-12 items-center justify-center rounded-full border px-7 text-sm font-semibold transition-colors"
           >
             See what&apos;s inside
