@@ -20,8 +20,9 @@ import * as amplitude from "@amplitude/analytics-browser";
  * - hero_section: the hero CTAs at the top of the page
  * - nav_menu: the header nav at the top right
  * - footer: the link columns at the bottom of the page (Product section)
+ * - pricing: the conversion CTA inside the pricing card itself
  */
-export type ClickLocation = "hero_section" | "nav_menu" | "footer";
+export type ClickLocation = "hero_section" | "nav_menu" | "footer" | "pricing";
 
 /** Discriminated map: event name → required property shape. */
 export type EventMap = {
