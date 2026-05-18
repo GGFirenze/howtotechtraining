@@ -16,11 +16,15 @@ let serverInitialized = false;
 function ensureServerInit(): boolean {
   if (serverInitialized) return true;
 
-  const apiKey = process.env.AMPLITUDE_API_KEY;
+  // Same project API key used by the browser SDK — Amplitude has a single
+  // project-wide ingestion key, so we read the same env var server-side.
+  // Reading a NEXT_PUBLIC_-prefixed var on the server is fine; it just
+  // means the value is also available to the browser bundle.
+  const apiKey = process.env.NEXT_PUBLIC_AMPLITUDE_API_KEY;
   if (!apiKey) {
     if (process.env.NODE_ENV === "development") {
       console.warn(
-        "[Amplitude] AMPLITUDE_API_KEY is not set on the server — server events will be skipped.",
+        "[Amplitude] NEXT_PUBLIC_AMPLITUDE_API_KEY is not set — server events will be skipped.",
       );
     }
     return false;
