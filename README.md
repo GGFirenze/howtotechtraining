@@ -50,6 +50,33 @@ src/
   components/         # Shared UI components
   lib/                # Domain helpers (analytics, supabase, lemon-squeezy, email)
 public/               # Static assets
+supabase/             # Database migrations + seed data
+  migrations/         # Versioned SQL migrations applied to the Postgres DB
+```
+
+## Database migrations
+
+The Postgres schema lives in `supabase/migrations/*.sql` as versioned files.
+Two ways to apply them to your Supabase project:
+
+**Dashboard (simplest, recommended for occasional changes):**
+
+1. Open the Supabase dashboard for your project.
+2. SQL Editor → New query.
+3. Paste the contents of the latest migration file.
+4. Run.
+
+**CLI (recommended once changes get frequent):**
+
+```bash
+# One-time: install Supabase CLI (https://supabase.com/docs/guides/cli)
+brew install supabase/tap/supabase
+
+# Link the local repo to your hosted project (asks for the project ref + DB password)
+supabase link --project-ref <your-project-ref>
+
+# Apply pending migrations
+supabase db push
 ```
 
 ## Environment variables
