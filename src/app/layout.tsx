@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import { AmplitudeInit } from "@/components/analytics/amplitude-init";
 import { IubendaBanner } from "@/components/legal/iubenda-banner";
+import { IubendaBannerCloseFix } from "@/components/legal/iubenda-banner-close-fix";
 
 import "./globals.css";
 
@@ -67,6 +68,7 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <IubendaBanner />
+        <IubendaBannerCloseFix />
         <AmplitudeInit />
         {children}
       </body>
