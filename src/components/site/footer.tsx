@@ -70,28 +70,59 @@ export function Footer() {
             </h3>
             <ul className="mt-4 space-y-3">
               <li>
+                {/*
+                  Iubenda modal embed: the iubenda-embed class makes the
+                  cdn.iubenda.com/iubenda.js loader (mounted globally in
+                  the layout) attach a click handler that opens the
+                  policy in a modal. Falls back to a normal navigation
+                  to the iubenda-hosted page if JS is disabled.
+                */}
                 <a
-                  href="/terms"
-                  className="text-foreground-muted hover:text-foreground transition-colors"
+                  href="https://www.iubenda.com/privacy-policy/88166144"
+                  className="iubenda-white iubenda-noiframe iubenda-embed text-foreground-muted hover:text-foreground transition-colors"
+                  title="Privacy Policy"
                 >
-                  Terms
+                  Privacy Policy
                 </a>
               </li>
               <li>
                 <a
-                  href="/privacy"
-                  className="text-foreground-muted hover:text-foreground transition-colors"
+                  href="https://www.iubenda.com/privacy-policy/88166144/cookie-policy"
+                  className="iubenda-white iubenda-noiframe iubenda-embed text-foreground-muted hover:text-foreground transition-colors"
+                  title="Cookie Policy"
                 >
-                  Privacy
+                  Cookie Policy
                 </a>
               </li>
               <li>
-                <a
-                  href="/refund"
-                  className="text-foreground-muted hover:text-foreground transition-colors"
+                {/*
+                  iubenda exposes a global helper to reopen the cookie
+                  banner from anywhere — useful so visitors can change
+                  their preferences after the first dismiss (a GDPR
+                  requirement). Guarded so a no-JS visitor doesn't see
+                  a dead button.
+                */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (
+                      typeof window !== "undefined" &&
+                      window._iub &&
+                      !Array.isArray(window._iub) &&
+                      window._iub.cs
+                    ) {
+                      // Iubenda exposes openPreferences on the global API at runtime;
+                      // we narrow the loose runtime type here.
+                      const cs = window._iub.cs as {
+                        api?: { openPreferences?: () => void };
+                      };
+                      cs.api?.openPreferences?.();
+                    }
+                  }}
+                  className="text-foreground-muted hover:text-foreground bg-transparent p-0 text-left text-sm transition-colors"
                 >
-                  Refund policy
-                </a>
+                  Cookie preferences
+                </button>
               </li>
             </ul>
           </div>
