@@ -71,7 +71,7 @@ export default function CookiePolicyPage() {
       <p>For any data protection request, complaint, or other GDPR matter, please contact:</p>
       <p>
         <strong>Owner contact email:</strong>{" "}
-        <a href="mailto:[email protected]">[email protected]</a>
+        <a href="mailto:info@crackvilt.com">info@crackvilt.com</a>
       </p>
 
       <h2>How this Website uses Trackers</h2>
