@@ -71,29 +71,20 @@ export function Footer() {
             </h3>
             <ul className="mt-4 space-y-3">
               <li>
-                {/*
-                  Iubenda modal embed: the iubenda-embed class makes the
-                  cdn.iubenda.com/iubenda.js loader (mounted globally in
-                  the layout) attach a click handler that opens the
-                  policy in a modal. Falls back to a normal navigation
-                  to the iubenda-hosted page if JS is disabled.
-                */}
-                <a
-                  href="https://www.iubenda.com/privacy-policy/88166144"
-                  className="iubenda-white iubenda-noiframe iubenda-embed text-foreground-muted hover:text-foreground transition-colors"
-                  title="Privacy Policy"
+                <Link
+                  href="/privacy"
+                  className="text-foreground-muted hover:text-foreground transition-colors"
                 >
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="https://www.iubenda.com/privacy-policy/88166144/cookie-policy"
-                  className="iubenda-white iubenda-noiframe iubenda-embed text-foreground-muted hover:text-foreground transition-colors"
-                  title="Cookie Policy"
+                <Link
+                  href="/cookies"
+                  className="text-foreground-muted hover:text-foreground transition-colors"
                 >
                   Cookie Policy
-                </a>
+                </Link>
               </li>
               <li>
                 {/*
