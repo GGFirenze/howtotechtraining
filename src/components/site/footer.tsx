@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { Logo } from "@/components/logo";
 import { trackEvent } from "@/lib/analytics/events";
+import { clearConsent } from "@/lib/consent";
 
 export function Footer() {
   return (
@@ -96,29 +97,15 @@ export function Footer() {
               </li>
               <li>
                 {/*
-                  iubenda exposes a global helper to reopen the cookie
-                  banner from anywhere — useful so visitors can change
-                  their preferences after the first dismiss (a GDPR
-                  requirement). Guarded so a no-JS visitor doesn't see
-                  a dead button.
+                  Reopens our custom cookie banner. Calls clearConsent()
+                  which removes the localStorage record and dispatches
+                  the consent-changed event; CookieBanner sees the
+                  null state and re-renders. UK ICO / EDPB requirement
+                  that withdrawing consent must be as easy as giving it.
                 */}
                 <button
                   type="button"
-                  onClick={() => {
-                    if (
-                      typeof window !== "undefined" &&
-                      window._iub &&
-                      !Array.isArray(window._iub) &&
-                      window._iub.cs
-                    ) {
-                      // Iubenda exposes openPreferences on the global API at runtime;
-                      // we narrow the loose runtime type here.
-                      const cs = window._iub.cs as {
-                        api?: { openPreferences?: () => void };
-                      };
-                      cs.api?.openPreferences?.();
-                    }
-                  }}
+                  onClick={() => clearConsent()}
                   className="text-foreground-muted hover:text-foreground bg-transparent p-0 text-left text-sm transition-colors"
                 >
                   Cookie preferences
