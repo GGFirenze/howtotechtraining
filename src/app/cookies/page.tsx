@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description:
     "What cookies and tracking technologies CrackVILT uses, why, and how to control or revoke your consent at any time.",
   robots: { index: true, follow: true },
+  alternates: { canonical: "/cookies" },
 };
 
 /**
