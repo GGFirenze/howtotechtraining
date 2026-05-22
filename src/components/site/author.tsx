@@ -1,16 +1,19 @@
+import Image from "next/image";
+
 export function Author() {
   return (
     <section id="author" className="border-border-subtle border-t px-6 py-24 sm:px-10 sm:py-32">
       <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-[1fr_2fr] md:items-start md:gap-16">
         <div>
-          <div
-            aria-hidden
-            className="border-border-soft bg-background-elevated from-background-elevated to-background aspect-square w-full max-w-[260px] rounded-2xl border bg-gradient-to-br via-[#0d1426]"
-          >
-            {/* Author photo placeholder — swap for an actual headshot when ready */}
-            <div className="text-foreground-subtle flex h-full items-center justify-center">
-              <span className="font-mono text-xs tracking-widest uppercase">photo</span>
-            </div>
+          <div className="border-border-soft bg-background-elevated relative aspect-[2/3] w-full max-w-[260px] overflow-hidden rounded-2xl border shadow-[0_0_40px_-12px_rgba(34,211,238,0.25)]">
+            <Image
+              src="/brand/giuliano.png"
+              alt="Giuliano Giannini, author of the guide"
+              fill
+              priority={false}
+              sizes="(max-width: 768px) 260px, 260px"
+              className="object-cover"
+            />
           </div>
         </div>
 
