@@ -112,10 +112,10 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               <li>
                 <a
-                  href="mailto:[email protected]"
+                  href="mailto:info@crackvilt.com"
                   className="text-foreground-muted hover:text-foreground transition-colors"
                 >
-                  [email protected]
+                  info@crackvilt.com
                 </a>
               </li>
             </ul>
