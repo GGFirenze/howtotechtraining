@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description:
     "How CrackVILT collects and processes personal data, what your rights are, and the third parties involved in delivering this website.",
   robots: { index: true, follow: true },
+  alternates: { canonical: "/privacy" },
 };
 
 /**
