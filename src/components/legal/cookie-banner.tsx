@@ -37,8 +37,7 @@ import { type ConsentChoice, onConsentChange, readConsent, writeConsent } from "
  * first paint of hydration. There may be a sub-frame flash but it is
  * acceptable UX, and far better than showing a stale/incorrect state.
  */
-const subscribe = (callback: () => void): (() => void) =>
-  onConsentChange(() => callback());
+const subscribe = (callback: () => void): (() => void) => onConsentChange(() => callback());
 
 const getSnapshot = (): ConsentChoice | null => readConsent();
 
@@ -69,8 +68,8 @@ export function CookieBanner() {
             id="cookie-banner-description"
             className="text-foreground-muted mt-2 text-sm leading-relaxed"
           >
-            We use cookies for measurement (Amplitude analytics) to understand how the site is
-            used. You can accept or reject — denying may limit some features. See our{" "}
+            We use cookies for measurement (Amplitude analytics) to understand how the site is used.
+            You can accept or reject — denying may limit some features. See our{" "}
             <a
               href="https://www.iubenda.com/privacy-policy/88166144/cookie-policy"
               className="iubenda-white iubenda-noiframe iubenda-embed text-foreground hover:text-brand-cyan-bright underline transition-colors"
