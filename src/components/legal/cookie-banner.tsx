@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useSyncExternalStore } from "react";
 
 import { type ConsentChoice, onConsentChange, readConsent, writeConsent } from "@/lib/consent";
@@ -70,13 +71,12 @@ export function CookieBanner() {
           >
             We use cookies for measurement (Amplitude analytics) to understand how the site is used.
             You can accept or reject — denying may limit some features. See our{" "}
-            <a
-              href="https://www.iubenda.com/privacy-policy/88166144/cookie-policy"
-              className="iubenda-white iubenda-noiframe iubenda-embed text-foreground hover:text-brand-cyan-bright underline transition-colors"
-              title="Cookie Policy"
+            <Link
+              href="/cookies"
+              className="text-foreground hover:text-brand-cyan-bright underline transition-colors"
             >
               cookie policy
-            </a>
+            </Link>
             .
           </p>
         </div>
