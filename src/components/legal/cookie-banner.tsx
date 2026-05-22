@@ -1,9 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useSyncExternalStore } from "react";
 
 import { type ConsentChoice, onConsentChange, readConsent, writeConsent } from "@/lib/consent";
+
+/**
+ * Routes where the blur backdrop is suppressed even while the banner
+ * is shown. The user must be able to actually read the legal text we
+ * are asking them to consult before deciding — covering it with a
+ * blur would be a self-defeating dark pattern. The banner itself
+ * stays visible on these pages so consent can still be expressed
+ * without forcing the user to navigate away.
+ */
+const PATHS_WITHOUT_OVERLAY = ["/cookies", "/privacy"];
 
 /**
  * Custom GDPR / UK PECR cookie consent banner.
@@ -50,8 +61,11 @@ export function CookieBanner() {
     getSnapshot,
     getServerSnapshot,
   );
+  const pathname = usePathname();
 
   if (consent !== null) return null;
+
+  const showOverlay = !PATHS_WITHOUT_OVERLAY.includes(pathname);
 
   return (
     <>
@@ -63,11 +77,20 @@ export function CookieBanner() {
         to the site on giving it. A non-blocking visual blur is fine
         because it doesn't prevent the user from using the site without
         consenting first; it just nudges focus toward the banner.
+
+        Suppressed on /cookies and /privacy so the user can actually
+        read the legal text they are being asked to consult. Blurring
+        the policy you are inviting people to read would be a self-
+        defeating dark pattern. The banner itself stays visible on
+        those routes so consent can still be expressed without forcing
+        the user to navigate away first.
       */}
-      <div
-        aria-hidden
-        className="bg-background/40 pointer-events-none fixed inset-0 z-[9998] backdrop-blur-sm"
-      />
+      {showOverlay && (
+        <div
+          aria-hidden
+          className="bg-background/40 pointer-events-none fixed inset-0 z-[9998] backdrop-blur-sm"
+        />
+      )}
       <div
         role="dialog"
         aria-labelledby="cookie-banner-title"
