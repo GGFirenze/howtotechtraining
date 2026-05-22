@@ -13,35 +13,46 @@ export function Header() {
           <Logo width={150} priority />
         </Link>
 
+        {/*
+          All section links use absolute paths like '/#author' rather
+          than bare '#author'. Bare fragments only work when the
+          target section exists on the current route — they break
+          silently from /privacy and /cookies, which do NOT contain
+          those sections. The leading slash makes the link route to
+          the home page first, where the section exists, and scroll
+          to it. On the home page itself the browser handles the
+          fragment-only change as a same-page scroll, so behaviour
+          there is unchanged.
+        */}
         <div className="flex items-center gap-2 sm:gap-4">
-          <a
-            href="#whats-inside"
+          <Link
+            href="/#whats-inside"
             onClick={() => trackEvent("Whats Inside Clicked", { click_location: "nav_menu" })}
             className="text-foreground-muted hover:text-foreground hidden text-sm font-medium transition-colors sm:inline-block"
           >
             What&apos;s inside
-          </a>
-          <a
-            href="#author"
+          </Link>
+          <Link
+            href="/#author"
             onClick={() => trackEvent("Author Clicked", { click_location: "nav_menu" })}
             className="text-foreground-muted hover:text-foreground hidden text-sm font-medium transition-colors sm:inline-block"
           >
             Author
-          </a>
-          <a
-            href="#faq"
+          </Link>
+          <Link
+            href="/#faq"
             onClick={() => trackEvent("FAQ Clicked", { click_location: "nav_menu" })}
             className="text-foreground-muted hover:text-foreground hidden text-sm font-medium transition-colors sm:inline-block"
           >
             FAQ
-          </a>
-          <a
-            href="#pricing"
+          </Link>
+          <Link
+            href="/#pricing"
             onClick={() => trackEvent("Get Guide Clicked", { click_location: "nav_menu" })}
             className="bg-foreground text-background hover:bg-foreground-muted rounded-full px-4 py-2 text-sm font-semibold transition-colors"
           >
             Get the guide
-          </a>
+          </Link>
         </div>
       </nav>
     </header>

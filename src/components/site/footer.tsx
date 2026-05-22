@@ -25,42 +25,50 @@ export function Footer() {
             <h3 className="text-foreground-subtle text-xs font-semibold tracking-widest uppercase">
               Product
             </h3>
+            {/*
+              Section links use absolute paths like '/#whats-inside'
+              instead of bare '#whats-inside'. Bare fragments only
+              work when the target section exists on the current
+              route, so they break silently from /privacy and
+              /cookies. The absolute form routes to the home page
+              first and then scrolls to the fragment.
+            */}
             <ul className="mt-4 space-y-3">
               <li>
-                <a
-                  href="#whats-inside"
+                <Link
+                  href="/#whats-inside"
                   onClick={() => trackEvent("Whats Inside Clicked", { click_location: "footer" })}
                   className="text-foreground-muted hover:text-foreground transition-colors"
                 >
                   What&apos;s inside
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#author"
+                <Link
+                  href="/#author"
                   onClick={() => trackEvent("Author Clicked", { click_location: "footer" })}
                   className="text-foreground-muted hover:text-foreground transition-colors"
                 >
                   About the author
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#pricing"
+                <Link
+                  href="/#pricing"
                   onClick={() => trackEvent("Get Guide Clicked", { click_location: "footer" })}
                   className="text-foreground-muted hover:text-foreground transition-colors"
                 >
                   Pricing
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#faq"
+                <Link
+                  href="/#faq"
                   onClick={() => trackEvent("FAQ Clicked", { click_location: "footer" })}
                   className="text-foreground-muted hover:text-foreground transition-colors"
                 >
                   FAQ
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
