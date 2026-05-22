@@ -64,15 +64,11 @@ export default function CookiePolicyPage() {
       </p>
 
       <h2>Owner and Data Controller</h2>
-      <address>
-        <strong>CrackVILT</strong>
-        <br />
-        67 Sigrist Square,
-        <br />
-        Kingston upon Thames
-        <br />
-        KT2 6JY
-      </address>
+      <p>
+        <strong>CrackVILT</strong> &mdash; operated by Giuliano Giannini, an individual data
+        controller based in the United Kingdom.
+      </p>
+      <p>For any data protection request, complaint, or other GDPR matter, please contact:</p>
       <p>
         <strong>Owner contact email:</strong>{" "}
         <a href="mailto:[email protected]">[email protected]</a>
