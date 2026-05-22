@@ -69,15 +69,15 @@ export function CookieBanner() {
             id="cookie-banner-description"
             className="text-foreground-muted mt-2 text-sm leading-relaxed"
           >
-            We use cookies for measurement (Amplitude analytics) to understand how the site is used.
-            You can accept or reject — denying may limit some features. See our{" "}
+            We use cookies for measurement to understand how the site is used. You can accept or
+            reject at any time. See our{" "}
             <Link
               href="/cookies"
               className="text-foreground hover:text-brand-cyan-bright underline transition-colors"
             >
               cookie policy
-            </Link>
-            .
+            </Link>{" "}
+            for details.
           </p>
         </div>
 
