@@ -15,7 +15,7 @@ const QUESTIONS: QA[] = [
   },
   {
     q: "I'm a seasoned trainer. Will I learn anything new?",
-    a: "Probably. The author has been training tech audiences since 2014 and the guide reflects that depth: the angle on schema theory, the trusted-advisor career arc, and the specific templates are designed to give experienced trainers something to take away, not to teach the basics again.",
+    a: "Probably. The author has been training audiences since 2014, across multiple industries. But the honest answer is: every trainer worth following keeps learning. The moment you think you've seen it all is usually when results stop improving. The guide reflects that mindset: the angle on schema theory, the trusted-advisor career arc, and the specific templates are designed to give experienced trainers fresh tools, not the basics.",
   },
   {
     q: "What format do I get?",
