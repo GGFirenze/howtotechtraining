@@ -43,7 +43,7 @@ export function HomeStructuredData() {
         image: `${SITE_URL}/brand/giuliano.png`,
         jobTitle: "Senior Customer Success Architect",
         description:
-          "Technical Trainer in B2B Tech since 2020, transitioning to Senior Customer Success Architect in 2025. Has trained product teams worldwide — from VoIP at scale to SaaS onboarding to product analytics — and helped renew million-dollar accounts through training alone.",
+          "Technical Trainer in B2B Tech since 2020, transitioning to Senior Customer Success Architect in 2025. Has trained product teams worldwide, from VoIP at scale through SaaS onboarding to product analytics, helping renew million-dollar accounts through training alone.",
         knowsAbout: [
           "Virtual Instructor-Led Training",
           "Technical Training",
@@ -83,7 +83,7 @@ export function HomeStructuredData() {
         url: SITE_URL,
         image: `${SITE_URL}/opengraph-image.png`,
         description:
-          "The 130-page practical guide to designing and delivering Virtual Instructor-Led Training that actually sticks — for engineers, dev advocates, technical trainers, and consultants who teach live.",
+          "The 130-page practical guide to designing and delivering Virtual Instructor-Led Training that actually sticks. Built for engineers, dev advocates, technical trainers, and consultants who teach live.",
         about: [
           "Virtual Instructor-Led Training",
           "Training Design",

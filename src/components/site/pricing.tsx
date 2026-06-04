@@ -11,7 +11,7 @@ const FEATURES = [
   "POC discovery-call framework",
   "Audience design and engagement playbook",
   "Free updates to future revisions",
-  "One-time payment — no subscription",
+  "One-time payment, no subscription",
 ];
 
 export function Pricing() {
@@ -84,7 +84,7 @@ export function Pricing() {
               onClick={handleBuyClick}
               className="bg-foreground text-background hover:bg-foreground-muted mt-10 inline-flex h-12 w-full items-center justify-center rounded-full px-7 text-sm font-semibold transition-colors"
             >
-              Buy now &mdash; £29
+              Buy now
             </button>
           ) : (
             <button
@@ -99,7 +99,7 @@ export function Pricing() {
           )}
 
           <p className="text-foreground-subtle mt-3 text-center text-xs">
-            Powered by Lemon Squeezy &mdash; tax and invoices handled for you.
+            Powered by Lemon Squeezy. Tax and invoices handled for you.
           </p>
         </div>
       </div>

@@ -37,12 +37,12 @@ const ITEMS: Item[] = [
   {
     title: "The classical-rhetoric backbone",
     description:
-      "Ethos, logos, pathos &mdash; Cicero’s De Oratore applied to product training, plus the science of how new memory builds on existing knowledge (Bartlett, Sweller).",
+      "Ethos, logos, pathos. Cicero’s De Oratore applied to product training, plus the science of how new memory builds on existing knowledge (Bartlett, Sweller).",
   },
   {
     title: "The trusted-advisor career arc",
     description:
-      "How great technical training opens the door to Sales Engineer, Solutions Architect, and Customer Success Architect roles &mdash; and what it takes to make the jump.",
+      "How great technical training opens the door to Sales Engineer, Solutions Architect, and Customer Success Architect roles, and what it takes to make the jump.",
   },
 ];
 

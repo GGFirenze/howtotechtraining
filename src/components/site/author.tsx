@@ -29,16 +29,17 @@ export function Author() {
           <div className="text-foreground-muted mt-8 space-y-5 text-lg leading-8">
             <p>
               Technical Trainer in B2B Tech since 2020, transitioning to Sr. Customer Success
-              Architect in 2025. He has trained product teams around the world &mdash; from VoIP at
-              scale, through SaaS onboarding, to product analytics &mdash; and helped renew
-              million-dollar accounts through training alone.
+              Architect in 2025. He has trained product teams around the world, from VoIP at scale
+              through SaaS onboarding to product analytics, helping renew million-dollar accounts
+              through training alone.
             </p>
             <p>
-              Public speaking has been a thread for two decades &mdash; from high school as Young
-              Peace Ambassador of the UNESCO Club of Florence, to commercial diplomacy at the
-              Italian Chamber of Commerce in Rosario, Argentina, and years travelling as a Product
-              Trainer for an Italian corporation before settling into tech. This guide distils two
-              years of writing and hundreds of real customer CSATs into one practical playbook.
+              Public speaking has been a thread for two decades. It started in high school as Young
+              Peace Ambassador of the UNESCO Club of Florence, continued with commercial diplomacy
+              at the Italian Chamber of Commerce in Rosario, Argentina, and ran through years
+              travelling as a Product Trainer for an Italian corporation before settling into tech.
+              This guide distils two years of writing and hundreds of real customer CSATs into one
+              practical playbook.
             </p>
           </div>
 
