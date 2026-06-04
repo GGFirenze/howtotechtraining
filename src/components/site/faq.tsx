@@ -7,15 +7,15 @@ type QA = { q: string; a: string };
 const QUESTIONS: QA[] = [
   {
     q: "Is this only for VILT, or does it cover in-person training too?",
-    a: "The guide is written from the lens of Virtual Instructor-Led Training because that's the dominant format in B2B Tech today, but most of the material — discovery calls, audience design, storytelling, follow-up — applies equally to in-person workshops and conference talks.",
+    a: "The guide is written from the lens of Virtual Instructor-Led Training because that's the dominant format in B2B Tech today, but most of the material (discovery calls, audience design, storytelling, follow-up) applies equally to in-person workshops and conference talks.",
   },
   {
-    q: "I'm new to technical training — is this for me?",
+    q: "I'm new to technical training. Is this for me?",
     a: "Yes. The guide is explicitly written for engineers, dev advocates, and consultants moving into training delivery, as well as trainers who want to lift their CSAT. Nothing is gatekept behind years of experience.",
   },
   {
     q: "I'm a seasoned trainer. Will I learn anything new?",
-    a: "Probably. The author has been training tech audiences since 2014 and the guide reflects that depth — the angle on schema theory, the trusted-advisor career arc, and the specific templates are designed to give experienced trainers something to take away, not to teach the basics again.",
+    a: "Probably. The author has been training tech audiences since 2014 and the guide reflects that depth: the angle on schema theory, the trusted-advisor career arc, and the specific templates are designed to give experienced trainers something to take away, not to teach the basics again.",
   },
   {
     q: "What format do I get?",
@@ -23,11 +23,11 @@ const QUESTIONS: QA[] = [
   },
   {
     q: "Can I expense it through my company?",
-    a: "Yes — Lemon Squeezy handles invoicing automatically and supports adding your company name and VAT/GST number at checkout. The receipt is generated immediately and emailed to you.",
+    a: "Yes. Lemon Squeezy handles invoicing automatically and supports adding your company name and VAT/GST number at checkout. The receipt is generated immediately and emailed to you.",
   },
   {
     q: "What if it's not what I expected?",
-    a: "The guide is delivered as an immediate digital download, so all sales are final once the file is delivered. The table of contents, chapter excerpts, and author bio on this page are there so you can decide whether the content fits before you buy — please read them carefully. If something is technically wrong — broken link, corrupt file, double charge — email [email protected] and I'll fix it.",
+    a: "The guide is delivered as an immediate digital download, so all sales are final once the file is delivered. The table of contents, chapter excerpts, and author bio on this page are there so you can decide whether the content fits before you buy. Please read them carefully. If something is technically wrong (broken link, corrupt file, double charge), email [email protected] and I'll fix it.",
   },
   {
     q: "Do you offer team licences?",

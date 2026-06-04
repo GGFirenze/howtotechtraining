@@ -18,7 +18,7 @@ export function Hero() {
 
         <p className="text-foreground-muted mx-auto mt-6 max-w-2xl text-lg leading-8 text-pretty sm:text-xl">
           The 130-page practical guide to designing and delivering Virtual Instructor-Led Training
-          that actually sticks &mdash; for engineers, dev advocates, technical trainers, and
+          that actually sticks. Built for engineers, dev advocates, technical trainers, and
           consultants who teach live.
         </p>
 
@@ -28,7 +28,7 @@ export function Hero() {
             onClick={() => trackEvent("Get Guide Clicked", { click_location: "hero_section" })}
             className="bg-foreground text-background inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold transition-transform hover:scale-[1.02] active:scale-[0.99]"
           >
-            Get the guide &mdash; £29
+            Get the guide
           </a>
           <a
             href="#whats-inside"

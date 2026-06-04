@@ -16,8 +16,8 @@ export function Promise() {
         <div className="text-foreground-muted mt-8 space-y-5 text-lg leading-8">
           <p>
             Done well, technical training drives adoption, prevents churn, and saves million-dollar
-            accounts. Done poorly, it&apos;s two hours of slides nobody remembers &mdash; and a
-            customer who silently disengages.
+            accounts. Done poorly, it&apos;s two hours of slides nobody remembers, and a customer
+            who silently disengages.
           </p>
           <p>
             This guide is the playbook of a senior trainer who&apos;s helped renew major contracts
