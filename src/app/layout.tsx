@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { AmplitudeInit } from "@/components/analytics/amplitude-init";
+import { GoogleAdsInit } from "@/components/analytics/google-ads-init";
 import { CookieBanner } from "@/components/legal/cookie-banner";
 
 import "./globals.css";
@@ -77,6 +78,7 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
         <AmplitudeInit />
+        <GoogleAdsInit />
         {children}
         <CookieBanner />
       </body>

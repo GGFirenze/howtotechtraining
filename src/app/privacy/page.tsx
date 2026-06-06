@@ -150,6 +150,31 @@ export default function PrivacyPolicyPage() {
         .
       </p>
 
+      <h3>Advertising</h3>
+      <p>
+        This type of service allows User Data to be utilised for advertising communication purposes.
+        These communications are displayed in the form of banners and other advertisements on this
+        Website, possibly based on User interests, and are also used to measure the performance of
+        advertising campaigns and to attribute conversions to specific ad clicks.
+      </p>
+      <h4>Google Ads conversion tracking (Google LLC)</h4>
+      <p>
+        Google Ads conversion tracking is an analytics and advertising service provided by Google
+        LLC. It connects data from the Google Ads advertising network with actions performed on this
+        Website.
+      </p>
+      <p>
+        <strong>Personal Data processed:</strong> Trackers; Usage Data; ad-click identifier (gclid);
+        device information.
+      </p>
+      <p>
+        <strong>Service provided by:</strong> Google LLC (United States) —{" "}
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+          Privacy Policy
+        </a>
+        .
+      </p>
+
       <h3>Hosting and backend infrastructure</h3>
       <p>
         This type of service has the purpose of hosting Data and files that enable this Website to
