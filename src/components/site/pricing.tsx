@@ -82,7 +82,7 @@ export function Pricing() {
             <button
               type="button"
               onClick={handleBuyClick}
-              className="bg-foreground text-background hover:bg-foreground-muted mt-10 inline-flex h-12 w-full items-center justify-center rounded-full px-7 text-sm font-semibold transition-colors"
+              className="bg-foreground text-background hover:bg-foreground-muted mt-10 inline-flex h-12 w-full cursor-pointer items-center justify-center rounded-full px-7 text-sm font-semibold transition-colors"
             >
               Buy now
             </button>
@@ -91,7 +91,7 @@ export function Pricing() {
               type="button"
               disabled
               aria-disabled="true"
-              className="bg-foreground/30 text-background mt-10 inline-flex h-12 w-full items-center justify-center rounded-full px-7 text-sm font-semibold opacity-60"
+              className="bg-foreground/30 text-background mt-10 inline-flex h-12 w-full cursor-not-allowed items-center justify-center rounded-full px-7 text-sm font-semibold opacity-60"
               title="Checkout opens at launch"
             >
               Checkout opens at launch

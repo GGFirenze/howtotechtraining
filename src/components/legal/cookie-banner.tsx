@@ -130,14 +130,14 @@ export function CookieBanner() {
             <button
               type="button"
               onClick={() => writeConsent("rejected")}
-              className="border-border-soft text-foreground hover:bg-background inline-flex h-10 items-center justify-center rounded-full border px-5 text-sm font-medium transition-colors"
+              className="border-border-soft text-foreground hover:bg-background inline-flex h-10 cursor-pointer items-center justify-center rounded-full border px-5 text-sm font-medium transition-colors"
             >
               Reject
             </button>
             <button
               type="button"
               onClick={() => writeConsent("accepted")}
-              className="bg-foreground text-background hover:bg-foreground-muted inline-flex h-10 items-center justify-center rounded-full px-5 text-sm font-semibold transition-colors"
+              className="bg-foreground text-background hover:bg-foreground-muted inline-flex h-10 cursor-pointer items-center justify-center rounded-full px-5 text-sm font-semibold transition-colors"
             >
               Accept
             </button>

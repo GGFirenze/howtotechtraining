@@ -105,7 +105,7 @@ export function Footer() {
                 <button
                   type="button"
                   onClick={() => clearConsent()}
-                  className="text-foreground-muted hover:text-foreground bg-transparent p-0 text-left text-sm transition-colors"
+                  className="text-foreground-muted hover:text-foreground cursor-pointer bg-transparent p-0 text-left text-sm transition-colors"
                 >
                   Cookie preferences
                 </button>
