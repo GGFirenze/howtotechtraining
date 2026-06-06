@@ -118,6 +118,32 @@ export default function CookiePolicyPage() {
         Usage Data.
       </p>
 
+      <h3>Marketing</h3>
+      <p>
+        This Website uses Trackers to deliver and measure online advertising, including measuring
+        the performance of advertising campaigns and attributing conversions to ad clicks.
+      </p>
+      <h4>Trackers managed by third parties — Google LLC</h4>
+      <p>
+        <strong>Google Ads (Global site tag)</strong>
+      </p>
+      <p>
+        <strong>Company:</strong> Google LLC
+      </p>
+      <p>
+        <strong>Place of processing:</strong> United States
+      </p>
+      <p>
+        <strong>Personal Data processed:</strong> Trackers; Usage Data; ad-click identifier (gclid);
+        device information.
+      </p>
+      <p>
+        <strong>Privacy policy:</strong>{" "}
+        <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">
+          policies.google.com/privacy
+        </a>
+      </p>
+
       <h2>How to manage preferences and provide or withdraw consent on this Website</h2>
       <p>
         Whenever the use of Trackers is based on consent, users can provide or withdraw such consent

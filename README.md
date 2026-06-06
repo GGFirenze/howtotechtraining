@@ -12,6 +12,7 @@ Landing page + checkout + delivery for **"Crack the Secret to a Successful VILT 
 - **Payments**: Lemon Squeezy (Merchant of Record — handles VAT/sales tax globally)
 - **Email**: Resend (transactional delivery + React Email templates)
 - **Analytics**: Amplitude (typed events, client + server-side)
+- **Ad attribution**: Google Ads global gtag.js (consent-gated, GCLID capture only)
 - **Hosting**: Vercel
 - **CI**: GitHub Actions (lint, typecheck, build)
 
