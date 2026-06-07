@@ -56,6 +56,24 @@ export function Pricing() {
             VAT handled at checkout · payable in your local currency
           </p>
 
+          {/*
+            Launch bonus callout. Sits between the price and the feature
+            bullets so it reads as 'and here is something extra' rather
+            than blending in with the standard feature list. Cyan border
+            and brand-cyan-bright text tie it to the brand accent without
+            screaming. Will be removed once the first 50 buyers redeem
+            (or the bonus window otherwise closes).
+          */}
+          <div className="border-brand-cyan-bright/30 bg-brand-cyan-bright/5 mt-6 rounded-2xl border p-4">
+            <p className="text-brand-cyan-bright text-xs font-semibold tracking-widest uppercase">
+              Launch bonus · first 50 buyers
+            </p>
+            <p className="text-foreground mt-2 text-sm leading-relaxed">
+              Includes a complimentary 30-minute coaching call with the author. Bring a real
+              session, problem, or topic from your work, redeemable within 60 days of purchase.
+            </p>
+          </div>
+
           <ul className="mt-8 space-y-3">
             {FEATURES.map((f) => (
               <li key={f} className="text-foreground flex items-start gap-3 text-sm">

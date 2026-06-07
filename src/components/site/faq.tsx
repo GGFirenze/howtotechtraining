@@ -22,12 +22,16 @@ const QUESTIONS: QA[] = [
     a: "An instant PDF download (130 pages). Readable on any device. Free updates to future revisions of this edition.",
   },
   {
+    q: "What's the launch bonus?",
+    a: "For the first 50 buyers, the £29 guide includes a complimentary 30-minute coaching call with the author. After purchase you'll receive a booking link by email. The session must be scheduled within 60 days of purchase. Bring a real session, problem, or topic from your work and we'll dig into it together. Past 50 buyers the bonus closes; the purchase remains the £29 guide as an instant PDF, just without the call.",
+  },
+  {
     q: "Can I expense it through my company?",
     a: "Yes. Lemon Squeezy handles invoicing automatically and supports adding your company name and VAT/GST number at checkout. The receipt is generated immediately and emailed to you.",
   },
   {
     q: "What if it's not what I expected?",
-    a: "The guide is delivered as an immediate digital download, so all sales are final once the file is delivered. The table of contents, chapter excerpts, and author bio on this page are there so you can decide whether the content fits before you buy. Please read them carefully. If something is technically wrong (broken link, corrupt file, double charge), email [email protected] and I'll fix it.",
+    a: "The guide is delivered as an immediate digital download, so all sales are final once the file is delivered. The launch bonus coaching call (where applicable) must be redeemed within 60 days; unredeemed sessions don't roll over. The table of contents, chapter excerpts, and author bio on this page are there so you can decide whether the content fits before you buy. Please read them carefully. If something is technically wrong (broken link, corrupt file, double charge), email [email protected] and I'll fix it.",
   },
   {
     q: "Do you offer team licences?",
