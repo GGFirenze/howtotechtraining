@@ -126,6 +126,16 @@ export function Footer() {
                   info@crackvilt.com
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/crackvilt"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground-muted hover:text-foreground transition-colors"
+                >
+                  LinkedIn
+                </a>
+              </li>
             </ul>
           </div>
         </div>
