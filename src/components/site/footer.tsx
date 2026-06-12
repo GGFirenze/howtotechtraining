@@ -1,12 +1,44 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { Logo } from "@/components/logo";
 import { trackEvent } from "@/lib/analytics/events";
 import { clearConsent } from "@/lib/consent";
+import { smoothScrollToAnchor } from "@/lib/scroll";
+
+type AnchorTarget = "whats-inside" | "author" | "faq" | "pricing";
+type FooterEventName =
+  | "Whats Inside Clicked"
+  | "Author Clicked"
+  | "FAQ Clicked"
+  | "Get Guide Clicked";
 
 export function Footer() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  /*
+   * Same rationale as Header.handleNavClick: on the home page, intercept
+   * the click and use smoothScrollToAnchor so the user gets a real
+   * scroll + visible cyan pulse + DOM mutation, bypassing the next/link
+   * same-href no-op behaviour. On other pages, let next/link handle
+   * cross-page navigation.
+   */
+  const handleNavClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    anchor: AnchorTarget,
+    eventName: FooterEventName,
+  ): void => {
+    trackEvent(eventName, { click_location: "footer" });
+
+    if (isHome) {
+      event.preventDefault();
+      smoothScrollToAnchor(anchor);
+    }
+  };
+
   return (
     <footer className="border-border-subtle bg-background-elevated border-t px-6 py-12 sm:px-10 sm:py-16">
       <div className="mx-auto flex max-w-6xl flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
@@ -37,7 +69,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/#whats-inside"
-                  onClick={() => trackEvent("Whats Inside Clicked", { click_location: "footer" })}
+                  onClick={(e) => handleNavClick(e, "whats-inside", "Whats Inside Clicked")}
                   className="text-foreground-muted hover:text-foreground transition-colors"
                 >
                   What&apos;s inside
@@ -46,7 +78,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/#author"
-                  onClick={() => trackEvent("Author Clicked", { click_location: "footer" })}
+                  onClick={(e) => handleNavClick(e, "author", "Author Clicked")}
                   className="text-foreground-muted hover:text-foreground transition-colors"
                 >
                   About the author
@@ -55,7 +87,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/#pricing"
-                  onClick={() => trackEvent("Get Guide Clicked", { click_location: "footer" })}
+                  onClick={(e) => handleNavClick(e, "pricing", "Get Guide Clicked")}
                   className="text-foreground-muted hover:text-foreground transition-colors"
                 >
                   Pricing
@@ -64,7 +96,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/#faq"
-                  onClick={() => trackEvent("FAQ Clicked", { click_location: "footer" })}
+                  onClick={(e) => handleNavClick(e, "faq", "FAQ Clicked")}
                   className="text-foreground-muted hover:text-foreground transition-colors"
                 >
                   FAQ
