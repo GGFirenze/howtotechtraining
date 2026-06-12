@@ -1,6 +1,7 @@
 "use client";
 
 import { trackEvent } from "@/lib/analytics/events";
+import { smoothScrollToAnchor } from "@/lib/scroll";
 
 export function Hero() {
   return (
@@ -23,16 +24,40 @@ export function Hero() {
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+          {/*
+            Hero CTAs use a JavaScript handler instead of the browser's
+            default anchor-link behaviour. The native behaviour produces
+            no DOM mutation when the target is already in the viewport,
+            which Amplitude flags as a Dead Click and which session
+            replay confirmed correlates with immediate site abandonment
+            (especially on mobile, where 67% of dead-clicks on these
+            buttons led to bounces).
+
+            smoothScrollToAnchor() guarantees a DOM mutation (the
+            `target-pulse` class is added then removed), a visible
+            cyan pulse around the target section, and a smooth scroll
+            with the offset set in globals.css. The plain href is
+            kept so SEO crawlers, screen readers, and JS-disabled
+            visitors still see a real link destination.
+          */}
           <a
             href="#pricing"
-            onClick={() => trackEvent("Get Guide Clicked", { click_location: "hero_section" })}
+            onClick={(e) => {
+              e.preventDefault();
+              trackEvent("Get Guide Clicked", { click_location: "hero_section" });
+              smoothScrollToAnchor("pricing");
+            }}
             className="bg-foreground text-background inline-flex h-12 items-center justify-center rounded-full px-7 text-sm font-semibold transition-transform hover:scale-[1.02] active:scale-[0.99]"
           >
             Get the guide
           </a>
           <a
             href="#whats-inside"
-            onClick={() => trackEvent("Whats Inside Clicked", { click_location: "hero_section" })}
+            onClick={(e) => {
+              e.preventDefault();
+              trackEvent("Whats Inside Clicked", { click_location: "hero_section" });
+              smoothScrollToAnchor("whats-inside");
+            }}
             className="border-border-soft text-foreground hover:bg-background-elevated inline-flex h-12 items-center justify-center rounded-full border px-7 text-sm font-semibold transition-colors"
           >
             See what&apos;s inside
