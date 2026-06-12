@@ -40,19 +40,19 @@ Two sales recorded so far, both from personal network. The cold-traffic experime
 
 ## Stack
 
-| Layer | Choice | Rationale |
-|---|---|---|
-| Framework | Next.js 16 + React 19 | Latest stable, App Router, Turbopack |
-| Styling | Tailwind CSS v4 | Industry standard, fast iteration |
-| Hosting | Vercel | Best Next.js DX, automatic CDN, preview deployments |
-| Database | Supabase (Postgres) | Free tier sufficient, RLS for security |
-| Payments | Lemon Squeezy | Merchant of Record handles VAT/sales tax globally |
-| Analytics | Amplitude (browser + server) | Identity stitching, session replay, server-side events |
-| Ad attribution | Google Ads gtag.js (consent-gated) | GCLID capture for paid traffic optimization |
-| DNS / domain | Cloudflare (DNS only, NOT proxied) | Vercel + Cloudflare proxy = problems; DNS-only is recommended |
-| Email aliases | Cloudflare Email Routing | Free, info@crackvilt.com → personal inbox |
-| Booking | Cal.com (free tier) | Used for launch bonus coaching calls |
-| Email (planned) | Resend | Not yet activated; reserved for M5 if/when needed |
+| Layer           | Choice                             | Rationale                                                     |
+| --------------- | ---------------------------------- | ------------------------------------------------------------- |
+| Framework       | Next.js 16 + React 19              | Latest stable, App Router, Turbopack                          |
+| Styling         | Tailwind CSS v4                    | Industry standard, fast iteration                             |
+| Hosting         | Vercel                             | Best Next.js DX, automatic CDN, preview deployments           |
+| Database        | Supabase (Postgres)                | Free tier sufficient, RLS for security                        |
+| Payments        | Lemon Squeezy                      | Merchant of Record handles VAT/sales tax globally             |
+| Analytics       | Amplitude (browser + server)       | Identity stitching, session replay, server-side events        |
+| Ad attribution  | Google Ads gtag.js (consent-gated) | GCLID capture for paid traffic optimization                   |
+| DNS / domain    | Cloudflare (DNS only, NOT proxied) | Vercel + Cloudflare proxy = problems; DNS-only is recommended |
+| Email aliases   | Cloudflare Email Routing           | Free, info@crackvilt.com → personal inbox                     |
+| Booking         | Cal.com (free tier)                | Used for launch bonus coaching calls                          |
+| Email (planned) | Resend                             | Not yet activated; reserved for M5 if/when needed             |
 
 ---
 
@@ -155,15 +155,15 @@ Bundle introduction: £29 guide + 30-min coaching call for first 50 buyers. Deli
 
 ## Marketing channels — what's been tried
 
-| Channel | Status | Outcome so far |
-|---|---|---|
-| LinkedIn personal launch post | 1 post published | Generated initial site visits, no direct sales attributed |
-| Google Ads Performance Max | Active, day 5 of 14-day evaluation window | 0 paid sales (within statistical expectation at this volume) |
-| Amplitude G&S launch bonus banner (A/B test) | Just activated 7 June | Too early to measure |
-| Personal network (friends) | 2 sales | Validated checkout works mechanically |
-| Business cards | Designed, awaiting delivery | Will deploy at local meetups |
-| LinkedIn Company Page posts | 1 post | Building follower base |
-| Email outreach to existing contacts | Not yet attempted | Highest-leverage organic move pending |
+| Channel                                      | Status                                    | Outcome so far                                               |
+| -------------------------------------------- | ----------------------------------------- | ------------------------------------------------------------ |
+| LinkedIn personal launch post                | 1 post published                          | Generated initial site visits, no direct sales attributed    |
+| Google Ads Performance Max                   | Active, day 5 of 14-day evaluation window | 0 paid sales (within statistical expectation at this volume) |
+| Amplitude G&S launch bonus banner (A/B test) | Just activated 7 June                     | Too early to measure                                         |
+| Personal network (friends)                   | 2 sales                                   | Validated checkout works mechanically                        |
+| Business cards                               | Designed, awaiting delivery               | Will deploy at local meetups                                 |
+| LinkedIn Company Page posts                  | 1 post                                    | Building follower base                                       |
+| Email outreach to existing contacts          | Not yet attempted                         | Highest-leverage organic move pending                        |
 
 ---
 

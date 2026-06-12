@@ -6,6 +6,10 @@ type QA = { q: string; a: string };
 
 const QUESTIONS: QA[] = [
   {
+    q: "What's the launch bonus?",
+    a: "For the first 50 buyers, the £29 guide includes a complimentary 30-minute coaching call with the author. After purchase you'll receive a booking link by email. The session must be scheduled within 60 days of purchase. Bring a real session, problem, or topic from your work and we'll dig into it together. Past 50 buyers the bonus closes; the purchase remains the £29 guide as an instant PDF, just without the call.",
+  },
+  {
     q: "Is this only for VILT, or does it cover in-person training too?",
     a: "The guide is written from the lens of Virtual Instructor-Led Training because that's the dominant format in B2B Tech today, but most of the material (discovery calls, audience design, storytelling, follow-up) applies equally to in-person workshops and conference talks.",
   },
@@ -20,10 +24,6 @@ const QUESTIONS: QA[] = [
   {
     q: "What format do I get?",
     a: "An instant PDF download (130 pages). Readable on any device. Free updates to future revisions of this edition.",
-  },
-  {
-    q: "What's the launch bonus?",
-    a: "For the first 50 buyers, the £29 guide includes a complimentary 30-minute coaching call with the author. After purchase you'll receive a booking link by email. The session must be scheduled within 60 days of purchase. Bring a real session, problem, or topic from your work and we'll dig into it together. Past 50 buyers the bonus closes; the purchase remains the £29 guide as an instant PDF, just without the call.",
   },
   {
     q: "Can I expense it through my company?",
