@@ -57,3 +57,54 @@ body {
   background-clip: text;
   color: transparent;
 }
+
+/* Smooth scrolling for any anchor jump that goes through native anchor
+ * behaviour. Programmatic scroll via `scrollIntoView({ behavior: "smooth" })`
+ * (used by smoothScrollToAnchor in src/lib/scroll) animates regardless of
+ * this rule, but the rule is the safety net for native browser anchor jumps
+ * (e.g. from external sites linking to crackvilt.com/#pricing). */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset for anchor targets so the section header is not hidden behind
+ * the fixed-position site header. Applied to every section that the
+ * hero / nav / footer link to. 6rem ≈ 96px, comfortably above the
+ * tallest header rendering on mobile. */
+[id="whats-inside"],
+[id="author"],
+[id="pricing"],
+[id="faq"] {
+  scroll-margin-top: 6rem;
+}
+
+/* Pulse animation triggered by smoothScrollToAnchor(). Adds a brief
+ * cyan halo around the target section so the user perceives the click
+ * as registered even when the target is already in the viewport. The
+ * animation runs for 800ms (matches PULSE_DURATION_MS in the helper)
+ * then the class is removed, ready to re-trigger on subsequent clicks. */
+@keyframes target-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 24px rgba(34, 211, 238, 0);
+  }
+}
+
+.target-pulse {
+  animation: target-pulse 800ms ease-out;
+}
+
+/* Respect users who have requested reduced motion. The pulse halo
+ * is purely decorative; the smooth scroll is the primary feedback
+ * for those users. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .target-pulse {
+    animation: none;
+  }
+}
