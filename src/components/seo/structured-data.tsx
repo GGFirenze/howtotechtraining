@@ -92,7 +92,7 @@ export function HomeStructuredData() {
         ],
         offers: {
           "@type": "Offer",
-          price: "29.00",
+          price: "15.00",
           priceCurrency: "GBP",
           availability: "https://schema.org/InStock",
           url: SITE_URL,
