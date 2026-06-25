@@ -27,11 +27,11 @@ const QUESTIONS: QA[] = [
   },
   {
     q: "What if it's not what I expected?",
-    a: "The guide is delivered as an immediate digital download, so all sales are final once the file is delivered. The table of contents, chapter excerpts, and author bio on this page are there so you can decide whether the content fits before you buy. Please read them carefully. If something is technically wrong (broken link, corrupt file, double charge), email [email protected] and I'll fix it.",
+    a: "The guide is delivered as an immediate digital download, so all sales are final once the file is delivered. The table of contents, chapter excerpts, and author bio on this page are there so you can decide whether the content fits before you buy. Please read them carefully. If something is technically wrong (broken link, corrupt file, double charge), email info@crackvilt.com and I'll fix it.",
   },
   {
     q: "Do you offer team licences?",
-    a: "Not yet, but it's on the roadmap. If you need bulk access for an enablement team, email [email protected] and we'll work something out.",
+    a: "Not yet, but it's on the roadmap. If you need bulk access for an enablement team, email info@crackvilt.com and we'll work something out.",
   },
 ];
 
