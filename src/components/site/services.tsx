@@ -59,7 +59,7 @@ const TIERS: Tier[] = [
         return {
           href: strategyCheckout,
           kind: "checkout",
-          ctaLabel: "Book & pay, £120",
+          ctaLabel: "Book & pay",
           external: false,
         };
       }
