@@ -120,7 +120,7 @@ const TIERS: Tier[] = [
     price: "£3,000",
     cadence: "two-day programme",
     summary:
-      "I train up to 6 of your in-house trainers on the CrackVILT method so your team can design and deliver technical training on its own.",
+      "I train up to 6 of your in-house trainers on the CrackVILT method to lift your team's CSAT and session effectiveness.",
     bullets: [
       "2 full days of live training (remote or on-site)",
       "Up to 6 in-house trainers",
