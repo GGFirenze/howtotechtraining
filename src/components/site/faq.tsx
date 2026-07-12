@@ -30,8 +30,8 @@ const QUESTIONS: QA[] = [
     a: "The guide is delivered as an immediate digital download, so all sales are final once the file is delivered. The table of contents, chapter excerpts, and author bio on this page are there so you can decide whether the content fits before you buy. Please read them carefully. If something is technically wrong (broken link, corrupt file, double charge), email info@crackvilt.com and I'll fix it.",
   },
   {
-    q: "Do you offer team licences?",
-    a: "Not yet, but it's on the roadmap. If you need bulk access for an enablement team, email info@crackvilt.com and we'll work something out.",
+    q: "Do you offer team licences or hands-on help?",
+    a: 'Yes. Beyond the guide, I offer three service tiers for teams — a one-hour Strategy Call, a full VILT Delivery Pack where I run the workshop for you, and a Train the Trainer programme for in-house enablement teams. See the <a href="#services" class="text-brand-cyan-bright hover:text-foreground underline underline-offset-4">Working with Giuliano</a> section above, or email info@crackvilt.com for bulk PDF access and bespoke curricula.',
   },
 ];
 
@@ -79,7 +79,10 @@ export function Faq() {
                   />
                 </svg>
               </summary>
-              <p className="text-foreground-muted mt-4 text-base leading-relaxed">{qa.a}</p>
+              <p
+                className="text-foreground-muted mt-4 text-base leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: qa.a }}
+              />
             </details>
           ))}
         </div>

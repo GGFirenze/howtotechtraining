@@ -8,6 +8,7 @@ import { Header } from "@/components/site/header";
 import { Hero } from "@/components/site/hero";
 import { Pricing } from "@/components/site/pricing";
 import { Promise as PromiseSection } from "@/components/site/promise";
+import { Services } from "@/components/site/services";
 import { WhatsInside } from "@/components/site/whats-inside";
 
 /**
@@ -36,6 +37,7 @@ export default function Home() {
         <WhatsInside />
         <Author />
         <Pricing />
+        <Services />
         <Faq />
       </main>
       <Footer />

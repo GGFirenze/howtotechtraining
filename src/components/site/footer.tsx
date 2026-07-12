@@ -8,12 +8,13 @@ import { trackEvent } from "@/lib/analytics/events";
 import { clearConsent } from "@/lib/consent";
 import { smoothScrollToAnchor } from "@/lib/scroll";
 
-type AnchorTarget = "whats-inside" | "author" | "faq" | "pricing";
+type AnchorTarget = "whats-inside" | "author" | "faq" | "pricing" | "services";
 type FooterEventName =
   | "Whats Inside Clicked"
   | "Author Clicked"
   | "FAQ Clicked"
-  | "Get Guide Clicked";
+  | "Get Guide Clicked"
+  | "Services Clicked";
 
 export function Footer() {
   const pathname = usePathname();
@@ -91,6 +92,15 @@ export function Footer() {
                   className="text-foreground-muted hover:text-foreground transition-colors"
                 >
                   Pricing
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/#services"
+                  onClick={(e) => handleNavClick(e, "services", "Services Clicked")}
+                  className="text-foreground-muted hover:text-foreground transition-colors"
+                >
+                  Services
                 </Link>
               </li>
               <li>

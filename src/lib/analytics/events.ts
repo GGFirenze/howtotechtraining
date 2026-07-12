@@ -21,8 +21,17 @@ import * as amplitude from "@amplitude/analytics-browser";
  * - nav_menu: the header nav at the top right
  * - footer: the link columns at the bottom of the page (Product section)
  * - pricing: the conversion CTA inside the pricing card itself
+ * - services: the "Working with Giuliano" services section
  */
-export type ClickLocation = "hero_section" | "nav_menu" | "footer" | "pricing";
+export type ClickLocation = "hero_section" | "nav_menu" | "footer" | "pricing" | "services";
+
+/**
+ * The three service tiers offered on the site.
+ *
+ * The values are chosen for readability in Amplitude — Snake case
+ * survives grouping and copy/paste better than camel or spaces.
+ */
+export type ServiceTier = "strategy_call" | "delivery_pack" | "train_the_trainer";
 
 /** Discriminated map: event name → required property shape. */
 export type EventMap = {
@@ -31,6 +40,17 @@ export type EventMap = {
   "Author Clicked": { click_location: ClickLocation };
   "FAQ Clicked": { click_location: ClickLocation };
   "FAQ Expanded": { faq_name: string };
+  "Services Clicked": { click_location: ClickLocation };
+  "Service Tier Clicked": {
+    tier: ServiceTier;
+    /**
+     * How the CTA was resolved at click time. Lets us split funnels for
+     * "hot" tiers (checkout / calendar loaded) vs. "cold" tiers (email
+     * fallback because the URL was not yet configured), which is a
+     * meaningful distinction during early launch.
+     */
+    intake: "checkout" | "calendar" | "email";
+  };
 };
 
 /** Union of every event name in the taxonomy. */
