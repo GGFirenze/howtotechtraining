@@ -143,7 +143,7 @@ export function HomeStructuredData() {
         areaServed: "GB",
         url: `${SITE_URL}/#services`,
         description:
-          "Training outsourcing for companies with customers to train. I take one of your programmes and deliver it end-to-end (prep, session, follow-up) directly to your customers: scoping and content adaptation, one virtual workshop of up to a full day for up to 20 participants, plus post-training resources.",
+          "Training outsourcing for companies with customers to train. I take one of your programmes and deliver it end-to-end (prep, session, follow-up) directly to your customers: scoping and content adaptation, one virtual workshop of up to a full day for 25 to 50 participants per session (larger cohorts split across multiple sessions), plus post-training resources.",
         offers: {
           "@type": "Offer",
           price: "2500.00",
