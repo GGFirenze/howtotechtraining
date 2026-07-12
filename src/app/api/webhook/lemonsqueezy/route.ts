@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import { flushServerEvents, trackServerEvent } from "@/lib/analytics/server";
 import type { LemonSqueezyOrderAttributes, LemonSqueezyWebhookPayload } from "@/lib/lemon-squeezy";
+import { resolveProductFromOrder } from "@/lib/lemon-squeezy/products";
 import { verifyLemonSqueezySignature } from "@/lib/lemon-squeezy/webhook";
 import { getSupabaseAdmin } from "@/lib/supabase/server";
 
@@ -132,6 +133,7 @@ async function processOrderCreated(payload: LemonSqueezyWebhookPayload): Promise
 
   const customData = payload.meta.custom_data ?? {};
   const status = mapLemonSqueezyStatus(attrs.status);
+  const product = resolveProductFromOrder(payload);
 
   const purchaseRow = {
     email: attrs.user_email,
@@ -141,6 +143,7 @@ async function processOrderCreated(payload: LemonSqueezyWebhookPayload): Promise
     provider: PROVIDER,
     provider_order_id: String(order.id),
     status,
+    product_type: product.type,
     amplitude_device_id: customData.device_id ?? null,
     utm_source: customData.utm_source ?? null,
     utm_medium: customData.utm_medium ?? null,
@@ -178,7 +181,8 @@ async function processOrderCreated(payload: LemonSqueezyWebhookPayload): Promise
         revenue: attrs.total / 100,
         currency: attrs.currency,
         order_id: String(order.id),
-        product: "crackvilt-guide",
+        product: product.type,
+        product_name: product.displayName,
         country: attrs.tax_country ?? undefined,
         provider: PROVIDER,
         utm_source: customData.utm_source,
@@ -197,11 +201,17 @@ async function processOrderRefunded(payload: LemonSqueezyWebhookPayload): Promis
   const supabase = getSupabaseAdmin();
   const order = payload.data;
   const attrs = order.attributes;
+  const product = resolveProductFromOrder(payload);
 
   const { error: updateError } = await supabase
     .from("purchases")
     .update({
       status: "refunded",
+      // Refresh product_type on refund too — a customer that
+      // originally purchased under an unmapped ID may have been
+      // remapped in the interim, and we want the refund row to reflect
+      // the current mapping so revenue nets cleanly per product.
+      product_type: product.type,
       raw_payload: payload as never,
     })
     .eq("provider", PROVIDER)
@@ -218,7 +228,8 @@ async function processOrderRefunded(payload: LemonSqueezyWebhookPayload): Promis
       revenue: -attrs.total / 100,
       currency: attrs.currency,
       order_id: String(order.id),
-      product: "crackvilt-guide",
+      product: product.type,
+      product_name: product.displayName,
       provider: PROVIDER,
     },
   });

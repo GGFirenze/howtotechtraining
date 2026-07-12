@@ -40,6 +40,25 @@ export type LemonSqueezyWebhookMeta = {
   custom_data?: LemonSqueezyCustomData;
 };
 
+/**
+ * Line item within an order. Lemon Squeezy exposes the first line item
+ * directly on the order attributes (`first_order_item`) which is enough
+ * for our single-product-per-checkout flow; multi-item carts would
+ * require walking `data.relationships.order-items` via a separate API
+ * call, which we don't need today.
+ */
+export type LemonSqueezyOrderItem = {
+  id?: number;
+  order_id?: number;
+  product_id?: number;
+  variant_id?: number;
+  product_name?: string;
+  variant_name?: string;
+  /** Line-item price in subunits (cents/pence). */
+  price?: number;
+  quantity?: number;
+};
+
 export type LemonSqueezyOrderAttributes = {
   store_id: number;
   customer_id: number;
@@ -54,6 +73,13 @@ export type LemonSqueezyOrderAttributes = {
   refunded: boolean;
   refunded_at: string | null;
   tax_country?: string | null;
+  /**
+   * First line item of the order. Present on `order_created` payloads
+   * for single-product checkouts (our current flow). Optional / null
+   * on some event types (e.g. subscription lifecycle events which we
+   * don't process).
+   */
+  first_order_item?: LemonSqueezyOrderItem | null;
   created_at: string;
   updated_at: string;
 };
