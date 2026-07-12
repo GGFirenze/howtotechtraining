@@ -17,6 +17,15 @@ export type Json = string | number | boolean | null | { [key: string]: Json | un
 
 export type PurchaseStatus = "pending" | "paid" | "refunded" | "failed";
 
+/**
+ * Internal product identifier stored on each purchase row and echoed
+ * into the server-side Amplitude `Order Placed` / `Order Refunded`
+ * events. Values are string literals (not a database enum) so future
+ * SKUs can be added without a migration; `unknown` is emitted when
+ * the LS product ID cannot be mapped via the env-var lookup.
+ */
+export type ProductType = "crackvilt-guide" | "strategy-call" | "unknown";
+
 export type PurchaseRow = {
   id: string;
   email: string;
@@ -27,6 +36,12 @@ export type PurchaseRow = {
   provider_order_id: string | null;
   provider_session_id: string | null;
   status: PurchaseStatus;
+  /**
+   * Which product was purchased. Null on rows written before the
+   * migration that introduced the column, backfilled to
+   * 'crackvilt-guide' where historically applicable.
+   */
+  product_type: ProductType | null;
   amplitude_device_id: string | null;
   utm_source: string | null;
   utm_medium: string | null;
@@ -52,6 +67,7 @@ export type PurchaseInsert = {
   provider_order_id?: string | null;
   provider_session_id?: string | null;
   status?: PurchaseStatus;
+  product_type?: ProductType | null;
   amplitude_device_id?: string | null;
   utm_source?: string | null;
   utm_medium?: string | null;
