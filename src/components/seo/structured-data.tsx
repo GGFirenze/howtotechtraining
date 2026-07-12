@@ -30,6 +30,9 @@ const PERSON_ID = `${SITE_URL}/#person-giuliano`;
 const ORGANIZATION_ID = `${SITE_URL}/#organization-crackvilt`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 const BOOK_ID = `${SITE_URL}/#book-crackvilt`;
+const SERVICE_STRATEGY_ID = `${SITE_URL}/#service-strategy-call`;
+const SERVICE_DELIVERY_ID = `${SITE_URL}/#service-vilt-delivery-pack`;
+const SERVICE_T3_ID = `${SITE_URL}/#service-train-the-trainer`;
 
 export function HomeStructuredData() {
   const graph = {
@@ -98,6 +101,77 @@ export function HomeStructuredData() {
           url: SITE_URL,
           seller: { "@id": ORGANIZATION_ID },
           category: "DigitalProduct",
+        },
+      },
+      /*
+       * Consulting service tiers. We model them as schema.org Service
+       * entities rather than Products because they are delivered live
+       * (not shipped) and priced per engagement. Each carries an Offer
+       * so eligible SERPs (and AI overviews) can surface the price.
+       *
+       * `areaServed: "GB"` reflects the fact that the invoicing entity
+       * is UK-based; delivery itself is remote-first, so international
+       * clients are welcome — the area is a business/tax hint, not a
+       * geographic restriction.
+       */
+      {
+        "@type": "Service",
+        "@id": SERVICE_STRATEGY_ID,
+        name: "Strategy Call",
+        serviceType: "Consulting",
+        provider: { "@id": ORGANIZATION_ID },
+        areaServed: "GB",
+        url: `${SITE_URL}/#services`,
+        description:
+          "A focused 60-minute call to unblock one specific technical-training problem — a struggling session, a curriculum review, or the design of a first VILT — with a written recap of action items delivered within 48 hours.",
+        offers: {
+          "@type": "Offer",
+          price: "120.00",
+          priceCurrency: "GBP",
+          availability: "https://schema.org/InStock",
+          url: `${SITE_URL}/#services`,
+          seller: { "@id": ORGANIZATION_ID },
+          category: "ProfessionalService",
+        },
+      },
+      {
+        "@type": "Service",
+        "@id": SERVICE_DELIVERY_ID,
+        name: "VILT Delivery Pack",
+        serviceType: "Training Delivery",
+        provider: { "@id": ORGANIZATION_ID },
+        areaServed: "GB",
+        url: `${SITE_URL}/#services`,
+        description:
+          "End-to-end delivery of one of your training programmes: scoping, content adaptation, dry run, one full-day virtual workshop for up to 20 participants, branded slides and workbook, plus two recap calls within four weeks.",
+        offers: {
+          "@type": "Offer",
+          price: "2500.00",
+          priceCurrency: "GBP",
+          availability: "https://schema.org/InStock",
+          url: `${SITE_URL}/#services`,
+          seller: { "@id": ORGANIZATION_ID },
+          category: "ProfessionalService",
+        },
+      },
+      {
+        "@type": "Service",
+        "@id": SERVICE_T3_ID,
+        name: "Train the Trainer",
+        serviceType: "Professional Development",
+        provider: { "@id": ORGANIZATION_ID },
+        areaServed: "GB",
+        url: `${SITE_URL}/#services`,
+        description:
+          "A two-day live programme that trains up to six of your in-house trainers on the CrackVILT method. Includes one 60-minute follow-up call at four weeks, a shadowing session on a real delivery with written feedback, and internal-use rights to the playbook and session templates.",
+        offers: {
+          "@type": "Offer",
+          price: "3000.00",
+          priceCurrency: "GBP",
+          availability: "https://schema.org/InStock",
+          url: `${SITE_URL}/#services`,
+          seller: { "@id": ORGANIZATION_ID },
+          category: "ProfessionalService",
         },
       },
     ],

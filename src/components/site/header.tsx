@@ -7,8 +7,13 @@ import { Logo } from "@/components/logo";
 import { trackEvent } from "@/lib/analytics/events";
 import { smoothScrollToAnchor } from "@/lib/scroll";
 
-type AnchorTarget = "whats-inside" | "author" | "faq" | "pricing";
-type NavEventName = "Whats Inside Clicked" | "Author Clicked" | "FAQ Clicked" | "Get Guide Clicked";
+type AnchorTarget = "whats-inside" | "author" | "faq" | "pricing" | "services";
+type NavEventName =
+  | "Whats Inside Clicked"
+  | "Author Clicked"
+  | "FAQ Clicked"
+  | "Get Guide Clicked"
+  | "Services Clicked";
 
 /**
  * Header navigation with smooth-scroll handling for same-page anchor
@@ -84,6 +89,13 @@ export function Header() {
             className="text-foreground-muted hover:text-foreground hidden text-sm font-medium transition-colors sm:inline-block"
           >
             Author
+          </Link>
+          <Link
+            href="/#services"
+            onClick={(e) => handleNavClick(e, "services", "Services Clicked")}
+            className="text-foreground-muted hover:text-foreground hidden text-sm font-medium transition-colors sm:inline-block"
+          >
+            Services
           </Link>
           <Link
             href="/#faq"
