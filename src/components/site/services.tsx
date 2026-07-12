@@ -89,7 +89,8 @@ const TIERS: Tier[] = [
       "Training outsourcing. I take one of your programmes and deliver it (prep, session, follow-up) directly to your customers.",
     bullets: [
       "1 virtual workshop, up to a full day (6 hours effective, breaks included)",
-      "Up to 20 participants",
+      "25 to 50 participants per session",
+      "Larger cohorts split across multiple sessions to keep engagement high",
       "Scoping and content adaptation before delivery",
       "Materials: slide deck, recap quiz, post-training resources",
     ],
