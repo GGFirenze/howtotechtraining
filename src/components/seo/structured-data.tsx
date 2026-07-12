@@ -123,7 +123,7 @@ export function HomeStructuredData() {
         areaServed: "GB",
         url: `${SITE_URL}/#services`,
         description:
-          "A focused 60-minute call to unblock one specific technical-training problem — a struggling session, a curriculum review, or the design of a first VILT — with a written recap of action items delivered within 48 hours.",
+          "A focused 60-minute call to unblock one specific technical-training problem, whether a struggling session, a curriculum review, or the design of a first VILT. Includes a written recap of action items delivered within 48 hours.",
         offers: {
           "@type": "Offer",
           price: "120.00",
@@ -143,7 +143,7 @@ export function HomeStructuredData() {
         areaServed: "GB",
         url: `${SITE_URL}/#services`,
         description:
-          "End-to-end delivery of one of your training programmes: scoping, content adaptation, dry run, one full-day virtual workshop for up to 20 participants, branded slides and workbook, plus two recap calls within four weeks.",
+          "Training outsourcing for companies with customers to train. I take one of your programmes and deliver it end-to-end (prep, session, follow-up) directly to your customers: scoping and content adaptation, one virtual workshop of up to a full day for up to 20 participants, plus post-training resources.",
         offers: {
           "@type": "Offer",
           price: "2500.00",
@@ -163,7 +163,7 @@ export function HomeStructuredData() {
         areaServed: "GB",
         url: `${SITE_URL}/#services`,
         description:
-          "A two-day live programme that trains up to six of your in-house trainers on the CrackVILT method. Includes one 60-minute follow-up call at four weeks, a shadowing session on a real delivery with written feedback, and internal-use rights to the playbook and session templates.",
+          "A two-day live programme that trains up to six of your in-house trainers on the CrackVILT method, so your team can design and deliver technical training on its own. Includes one 60-minute follow-up call at four weeks, a shadowing session on a real delivery with written feedback, and internal-use rights to the playbook and session templates.",
         offers: {
           "@type": "Offer",
           price: "3000.00",
