@@ -163,7 +163,7 @@ export function HomeStructuredData() {
         areaServed: "GB",
         url: `${SITE_URL}/#services`,
         description:
-          "A two-day live programme that trains up to six of your in-house trainers on the CrackVILT method, so your team can design and deliver technical training on its own. Includes one 60-minute follow-up call at four weeks, a shadowing session on a real delivery with written feedback, and internal-use rights to the playbook and session templates.",
+          "A two-day live programme that trains up to six of your in-house trainers on the CrackVILT method to lift their CSAT and session effectiveness. Includes one 60-minute follow-up call at four weeks, a shadowing session on a real delivery with written feedback, and internal-use rights to the playbook and session templates.",
         offers: {
           "@type": "Offer",
           price: "3000.00",
