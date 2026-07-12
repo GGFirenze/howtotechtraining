@@ -51,7 +51,7 @@ const TIERS: Tier[] = [
       "60-minute video call (Zoom or Google Meet)",
       "One clear problem: struggling session, curriculum review, first VILT design",
       "Written recap with action items within 48 hours",
-      "No prep call — just book, join, act",
+      "No prep call, just book and go",
     ],
     paymentNote: "Payment upfront. Booking link in your receipt.",
     resolveIntake: ({ cal, strategyCheckout }) => {
@@ -59,7 +59,7 @@ const TIERS: Tier[] = [
         return {
           href: strategyCheckout,
           kind: "checkout",
-          ctaLabel: "Book & pay — £120",
+          ctaLabel: "Book & pay, £120",
           external: false,
         };
       }
@@ -72,7 +72,7 @@ const TIERS: Tier[] = [
         };
       }
       return {
-        href: buildEnquiryMailto("Strategy Call — booking enquiry"),
+        href: buildEnquiryMailto("Strategy Call, booking enquiry"),
         kind: "email",
         ctaLabel: `Email ${BOOKING_FALLBACK_EMAIL}`,
         external: false,
@@ -86,13 +86,13 @@ const TIERS: Tier[] = [
     price: "£2,500",
     cadence: "per workshop",
     summary:
-      "I take one of your training programmes and deliver it end-to-end — prep, session, follow-up — so your team keeps focus on the roadmap.",
+      "Training outsourcing. I take one of your programmes and deliver it (prep, session, follow-up) directly to your customers.",
     bullets: [
       "1 virtual workshop, up to a full day (6 hours effective, breaks included)",
-      "Up to 20 participants",
-      "Scoping, content adaptation and dry run — around 10 hours of prep",
-      "Materials: slide deck, participant workbook, recap quiz",
-      "2 recap calls (30 min each) within 4 weeks of delivery",
+      "25 to 50 participants per session",
+      "Larger cohorts split across multiple sessions to keep engagement high",
+      "Scoping and content adaptation before delivery",
+      "Materials: slide deck, recap quiz, post-training resources",
     ],
     paymentNote: "50% deposit at signature, 50% on delivery. UK VAT applied at invoice.",
     highlighted: true,
@@ -106,7 +106,7 @@ const TIERS: Tier[] = [
         };
       }
       return {
-        href: buildEnquiryMailto("VILT Delivery Pack — scoping enquiry"),
+        href: buildEnquiryMailto("VILT Delivery Pack, scoping enquiry"),
         kind: "email",
         ctaLabel: `Email ${BOOKING_FALLBACK_EMAIL}`,
         external: false,
@@ -120,7 +120,7 @@ const TIERS: Tier[] = [
     price: "£3,000",
     cadence: "two-day programme",
     summary:
-      "I train up to 6 of your in-house trainers on the CrackVILT method so you can scale technical training without scaling my calendar.",
+      "I train up to 6 of your in-house trainers on the CrackVILT method so your team can design and deliver technical training on its own.",
     bullets: [
       "2 full days of live training (remote or on-site)",
       "Up to 6 in-house trainers",
@@ -140,7 +140,7 @@ const TIERS: Tier[] = [
         };
       }
       return {
-        href: buildEnquiryMailto("Train the Trainer — scoping enquiry"),
+        href: buildEnquiryMailto("Train the Trainer, scoping enquiry"),
         kind: "email",
         ctaLabel: `Email ${BOOKING_FALLBACK_EMAIL}`,
         external: false,
@@ -261,12 +261,12 @@ export function Services() {
         <p className="text-foreground-subtle mx-auto mt-12 max-w-3xl text-center text-sm leading-relaxed">
           Prefer to talk before committing? Email{" "}
           <a
-            href={buildEnquiryMailto("CrackVILT services — general enquiry")}
+            href={buildEnquiryMailto("CrackVILT services, general enquiry")}
             className="text-foreground-muted hover:text-foreground underline underline-offset-4 transition-colors"
           >
             {BOOKING_FALLBACK_EMAIL}
           </a>{" "}
-          and we&apos;ll find a fit — bespoke curricula, larger cohorts, and multi-day programmes on
+          and we&apos;ll find a fit. Bespoke curricula, larger cohorts, and multi-day programmes on
           request.
         </p>
       </div>
