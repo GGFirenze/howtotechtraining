@@ -51,16 +51,24 @@ export function Hero() {
           >
             Get the guide
           </a>
+          {/*
+            Secondary hero CTA promoted from 'See what's inside' to
+            'Explore our services' on 12 July 2026 to give the two
+            higher-margin service tiers (Delivery Pack, Train the
+            Trainer) surface at the top of the funnel. The 'What's
+            inside' section is still reachable via the header nav
+            and by scrolling.
+          */}
           <a
-            href="#whats-inside"
+            href="#services"
             onClick={(e) => {
               e.preventDefault();
-              trackEvent("Whats Inside Clicked", { click_location: "hero_section" });
-              smoothScrollToAnchor("whats-inside");
+              trackEvent("Services Clicked", { click_location: "hero_section" });
+              smoothScrollToAnchor("services");
             }}
             className="border-border-soft text-foreground hover:bg-background-elevated inline-flex h-12 items-center justify-center rounded-full border px-7 text-sm font-semibold transition-colors"
           >
-            See what&apos;s inside
+            Explore our services
           </a>
         </div>
 
