@@ -1,15 +1,22 @@
 # CrackVILT — Project Log
 
-> Last updated: **7 June 2026**
+> Last updated: **12 July 2026**
 > Maintained by: Giuliano Giannini
 
 ---
 
 ## TL;DR
 
-CrackVILT is a 130-page practical guide on Virtual Instructor-Led Training (VILT), launched **2 June 2026** at £29 as a digital download via Lemon Squeezy. As of 7 June 2026 the system is fully live: payment, delivery, analytics, GDPR/UK PECR compliance, SEO foundations, brand assets, paid acquisition (Google Ads), and a launch bonus offer (first 50 buyers receive a 30-min coaching call with the author).
+CrackVILT is a **two-product brand**:
 
-Two sales recorded so far, both from personal network. The cold-traffic experiment is underway via Google Ads + a bonus-driven A/B test, with kill criteria set at day 14 (19 June 2026).
+1. A 130-page practical guide on Virtual Instructor-Led Training (VILT), launched **2 June 2026** at £29, currently in a **30-day price test at £15**.
+2. A **B2B services tier** launched **12 July 2026** offering three engagements aimed at teams that already deliver training: Strategy Call (£120), VILT Delivery Pack (£2,500 per workshop, 25-50 participants), and Train the Trainer (£3,000, two-day programme, up to 6 in-house trainers).
+
+The strategic direction is shifting from _"sell the PDF as the primary product"_ to _"the PDF is credibility + entry; services are the primary revenue engine"_. That pivot is not yet reflected in the site's information architecture — the home page still leads with the PDF pricing card and treats services as a follow-on section. Restructure is gated on 2-3 weeks of services-inbound data.
+
+Google Ads was **paused** in early July after the 14-day kill-criteria window closed with zero paid conversions on the £29 SKU. The price test at £15 also has not (yet) produced a paid conversion, and the launch bonus (30-min coaching call for first 50 buyers) has been **suspended for the duration of the test** to isolate the pricing variable.
+
+The next 2-4 weeks are effectively a **product-market fit probe**: does the services tier draw B2B inbound from LinkedIn organic + the site? If yes, the site restructures around services and the guide moves to a supporting role. If no, the strategy pivots again toward a warmer channel (Sales Navigator outreach, targeted meta ads, or LinkedIn thought-leadership).
 
 ---
 
@@ -23,11 +30,21 @@ Two sales recorded so far, both from personal network. The cold-traffic experime
 
 **Brand positioning:** _"Practitioner-written content on technical training, customer success, and product analytics."_
 
-**Pricing:**
+**Pricing — guide:**
 
-- £29 one-time, instant PDF download
+- **£15** one-time, instant PDF download _(currently in a 30-day price test; original price £29)_
 - VAT handled at checkout (Lemon Squeezy as Merchant of Record)
-- **Launch bonus** (first 50 buyers): complimentary 30-min coaching call with the author, redeemable within 60 days
+- Launch bonus (30-min coaching call for first 50 buyers) **suspended** during the price test to keep the variable clean; concept preserved for possible reintroduction post-test
+
+**Pricing — services tier (launched 12 July 2026):**
+
+| Tier               | Price  | Format                                                                                                  | Intake                                                               |
+| ------------------ | ------ | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| Strategy Call      | £120   | 60-min video call + written recap within 48h                                                            | Direct Lemon Squeezy checkout (planned) / Cal.com fallback (current) |
+| VILT Delivery Pack | £2,500 | 1 full-day virtual workshop, 25-50 participants, scoping + content adaptation + post-training resources | Cal.com "Intro call — services" (15 min free scoping)                |
+| Train the Trainer  | £3,000 | 2-day live programme for up to 6 in-house trainers, follow-up call + shadowing + internal-use rights    | Cal.com "Intro call — services" (15 min free scoping)                |
+
+The two higher tiers intentionally route to a free 15-minute intro call rather than direct checkout: no company wires £2,500-£3,000 without a scoping conversation, and direct checkout on custom-scoped engagements would create refund risk. The Strategy Call is small enough (£120) and standardised enough to justify direct checkout — but the Lemon Squeezy product for it does not yet exist. Until it does, the CTA falls back to the same Cal.com link.
 
 **Brand palette:**
 
@@ -51,7 +68,7 @@ Two sales recorded so far, both from personal network. The cold-traffic experime
 | Ad attribution  | Google Ads gtag.js (consent-gated) | GCLID capture for paid traffic optimization                   |
 | DNS / domain    | Cloudflare (DNS only, NOT proxied) | Vercel + Cloudflare proxy = problems; DNS-only is recommended |
 | Email aliases   | Cloudflare Email Routing           | Free, info@crackvilt.com → personal inbox                     |
-| Booking         | Cal.com (free tier)                | Used for launch bonus coaching calls                          |
+| Booking         | Cal.com (free tier)                | Services intro calls + parked launch-bonus coaching-call slot |
 | Email (planned) | Resend                             | Not yet activated; reserved for M5 if/when needed             |
 
 ---
@@ -86,6 +103,35 @@ Performance Max campaign launched 2 June. Initial throttle phase recognised; glo
 
 Bundle introduction: £29 guide + 30-min coaching call for first 50 buyers. Delivered via Cal.com booking, link sent in Lemon Squeezy post-purchase email. A/B test running on Amplitude G&S banner (Variant A: "Learn more" → `/#faq`, Variant B: "Claim my spot" → `/#pricing`).
 
+### Phase 8 — Dead-click fixes and copy polish (mid-June to early July)
+
+Amplitude flagged repeated dead clicks on hero and header anchor CTAs. Root cause: `next/link` treats a same-URL navigation as a no-op, so clicks that fired the analytics event produced no scroll or visible feedback and looked broken. Session replay confirmed the pattern (five `Get Guide Clicked` events in 16 seconds from a single device, only the first producing a scroll — all subsequent from paid ad traffic).
+
+Fix: `smoothScrollToAnchor` helper with cyan pulse animation + `scroll-margin-top` respect + `history.pushState` for bookmarkability, wired into header, footer, hero, and TOC anchor links. Follow-on cleanup: FAQ email placeholder replaced, redundant `TocPreview` component removed, cursor states fixed for buttons under Tailwind v4's new default, em-dash density reduced further.
+
+### Phase 9 — Price test at £15 (late June onward)
+
+After Google Ads paused (see below) and volume stayed near zero at £29, dropped the price to £15 for a 30-day test. Launch bonus paragraph removed from the pricing card and the Lemon Squeezy product description to keep the pricing variable isolated. Snap-back plan: revert to £29 with the launch bonus reinstated if the £15 test does not produce a meaningful volume delta by day 30.
+
+### Phase 10 — Services tier launch (12 July 2026)
+
+Introduced three service tiers on the home page under a "Working with Giuliano" section between Pricing and FAQ:
+
+- **Strategy Call** (£120) — 60-minute call with written recap
+- **VILT Delivery Pack** (£2,500) — training outsourcing, 25-50 participants per session
+- **Train the Trainer** (£3,000) — 2-day programme for up to 6 in-house trainers, positioned around **lifting CSAT and session effectiveness** (not "learn training from scratch")
+
+Two new public env vars introduced:
+
+- `NEXT_PUBLIC_CAL_URL` — set to `https://cal.com/giuliano-giannini/intro-call-services` (a dedicated Cal.com event: 15 min, free, buffer 30 min, booking form asks company + tier of interest + training challenge)
+- `NEXT_PUBLIC_STRATEGY_CALL_CHECKOUT_URL` — not yet configured (Lemon Squeezy Strategy Call product not yet created; Strategy Call CTA falls back to Cal.com in the meantime)
+
+Analytics taxonomy extended with `Services Clicked` (nav events) and `Service Tier Clicked` (with `tier` + `intake` properties covering `checkout` / `calendar` / `email` fallback states). JSON-LD graph gained three `schema.org/Service` entities with `Offer` prices, enabling rich-result eligibility and AI-overview surfacing at the tier level.
+
+FAQ "Do you offer team licences?" rewritten to point to the new services section instead of the old "not yet, on the roadmap" placeholder.
+
+Delivered via four PRs (#35 initial section, #36 copy review + cohort widening, #37 Train the Trainer CSAT repositioning, this one for the log). The multi-PR split reflects a real-time editorial iteration on the copy, not a technical constraint.
+
 ---
 
 ## Current state — what's live
@@ -103,19 +149,24 @@ Bundle introduction: £29 guide + 30-min coaching call for first 50 buyers. Deli
 - [x] Author headshot on site
 - [x] LinkedIn personal launch post published
 - [x] LinkedIn Company Page setup
-- [x] Google Ads Performance Max campaign live (UK + Ireland geo)
-- [x] A/B test on launch bonus banner via Amplitude G&S
-- [x] Cal.com booking system for coaching calls
-- [x] Launch bonus FAQ + pricing card callout
-- [x] Business cards designed (Canva, soft-touch lamination, ordered via Moo)
+- [x] Cal.com booking system for coaching calls _(reused for services intro calls, dedicated event since 12 July)_
+- [x] Business cards delivered and in use
+- [x] Services tier live on home page (Strategy Call, Delivery Pack, Train the Trainer)
+- [x] Cal.com "Intro call — services" event live (15 min, free, buffer 30 min)
+- [x] `NEXT_PUBLIC_CAL_URL` set on Vercel (Production + Preview)
+- [x] Amplitude events for services funnel wired (`Services Clicked`, `Service Tier Clicked` with tier + intake properties)
+- [x] JSON-LD `Service` entities in home graph for rich results / AI overviews
+- [x] Guide price test at £15 (30-day)
+- [x] LinkedIn post #2 published (early July)
 
 ## Current state — open / pending
 
-- [ ] Business cards in transit (delivery 5-7 days)
-- [ ] Day 14 review of Google Ads (kill criteria: 19 June 2026)
-- [ ] LinkedIn content cadence — only post #1 published; post #2 onwards needs real source material from the guide
-- [ ] Outreach to 10-15 contacts with free copies in exchange for honest feedback
+- [ ] Wait for services-inbound signal (2-3 weeks minimum from 12 July → target window ~2 August)
+- [ ] LinkedIn post announcing services (draft prepared 12 July, to be published)
+- [ ] Amplitude funnel dashboard for services (`Services Clicked` → `Service Tier Clicked` → Cal.com click/LS conversion, split by tier + intake) — build once data starts flowing
+- [ ] Decide day-30 of price test: keep £15, revert £29, or restructure entirely around services
 - [ ] Real testimonials (currently zero — friends-bought sales don't count for testimonials)
+- [ ] Home restructure to promote services (deferred — data-gated, see roadmap)
 
 ## Deferred (not now, maybe later)
 
@@ -151,43 +202,75 @@ Bundle introduction: £29 guide + 30-min coaching call for first 50 buyers. Deli
 
 **Why CrackVILT is NOT linked as Experience on personal LinkedIn.** Listing it under personal Experience surfaced it above the day-job employer in profile rankings. Replaced with `Publications` entry + `Featured` post. Cleaner separation, no risk of HR/manager questions.
 
+**Why introduce services now.** Two signals: (a) the "Do you offer team licences?" FAQ was one of the more-clicked FAQ items in Amplitude, suggesting real B2B intent behind the guide traffic, and (b) the £15 price test on the PDF has not produced meaningful volume, so the guide alone is unlikely to reach the revenue target that the long-term consultancy ambition requires. Adding a services tier lets the site capture the higher-intent visitors immediately rather than waiting on a PDF flywheel that may never spin up.
+
+**Why the two higher tiers route to a Cal.com intro call, not direct checkout.** Delivery Pack (£2,500) and Train the Trainer (£3,000) are custom-scoped engagements. Direct checkout on custom work creates refund risk once scope is negotiated and asymmetries emerge. A 15-minute free intro call de-risks both sides: it filters serious leads, aligns scope, and produces a paper trail before an invoice goes out. The friction of "book a call" is a feature, not a bug, at this ticket size.
+
+**Why the Strategy Call CTA can direct-checkout in principle but does not today.** The Strategy Call is small enough (£120) and standardised enough (60 min + 48h recap) that a buyer can safely wire it without a call. Building the Lemon Squeezy product is deferred deliberately: the first 2-3 Strategy Calls will be free via Cal.com, treated as customer discovery — they teach what buyers actually ask for and what the recap deliverable should look like. Only then is the LS product built with a receipt-embedded Cal.com booking link. Optimising the checkout for an offering that hasn't been proven is wasted effort.
+
+**Why the Delivery Pack cohort is 25-50 per session, not "up to 20".** The initial bullet said "Up to 20 participants" — internally consistent with the guide's own "20-30 beats 100" chapter, but a hard 20-cap signalled a scope too small for typical corporate enablement cohorts (15-40 people) and priced out the mid-market buyer. Widening to 25-50 covers real B2B cohorts, and the paired bullet "Larger cohorts split across multiple sessions to keep engagement high" preserves the engagement-focused positioning of the guide _and_ converts >50-participant cohorts into multiple invoices rather than a hard no.
+
+**Why "lift your team's CSAT and session effectiveness" replaced "design and deliver on its own" for Train the Trainer.** The old framing implied the trainees start from zero — not the actual buyer profile. T3 is sold to enablement leaders whose team already delivers training but wants measurably better outcomes. Naming the outcome (CSAT + effectiveness) is more sellable than promising a capability the team already has.
+
+**Why the home page is NOT immediately restructured around services.** The temptation after launching the services section is to promote it to the top of the home page. That would be blind: the section is 30 minutes old at time of writing, zero data, zero booked calls. Restructuring the information architecture before knowing whether services actually pull inbound is premature optimisation. Decision gate: 2-3 weeks of Amplitude data + LinkedIn services post response → then decide.
+
+**Why launch bonus was suspended during the £15 price test.** Two variables (price drop + bonus removal) at once is intentional: the launch bonus experiment ran for ~4 weeks with no attributable conversions and had operational overhead (coaching-call logistics for a hypothetical first 50 buyers who never materialised). Removing it during the price test isolates pricing as the sole variable. If £15 doesn't move volume, the bonus wasn't the missing ingredient at £29 either — the diagnosis is deeper (audience fit, channel, or product-market).
+
 ---
 
 ## Marketing channels — what's been tried
 
-| Channel                                      | Status                                    | Outcome so far                                               |
-| -------------------------------------------- | ----------------------------------------- | ------------------------------------------------------------ |
-| LinkedIn personal launch post                | 1 post published                          | Generated initial site visits, no direct sales attributed    |
-| Google Ads Performance Max                   | Active, day 5 of 14-day evaluation window | 0 paid sales (within statistical expectation at this volume) |
-| Amplitude G&S launch bonus banner (A/B test) | Just activated 7 June                     | Too early to measure                                         |
-| Personal network (friends)                   | 2 sales                                   | Validated checkout works mechanically                        |
-| Business cards                               | Designed, awaiting delivery               | Will deploy at local meetups                                 |
-| LinkedIn Company Page posts                  | 1 post                                    | Building follower base                                       |
-| Email outreach to existing contacts          | Not yet attempted                         | Highest-leverage organic move pending                        |
+| Channel                                      | Status                                      | Outcome so far                                                                                   |
+| -------------------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| LinkedIn personal launch post                | Post #1 (early June) + Post #2 (early July) | Generated site visits, no attributable sales. Cadence still below the 1-2/week target            |
+| Google Ads Performance Max                   | **Paused** early July                       | 0 paid sales across the full 14-day evaluation window; kill criteria triggered                   |
+| Amplitude G&S launch bonus banner (A/B test) | Concluded / **suspended**                   | No conversions on either arm during runtime; banner removed with launch bonus                    |
+| Personal network (friends)                   | 2 sales at £29 in early June                | Validated checkout works mechanically; no signal on cold conversion                              |
+| Business cards                               | Delivered, in use                           | Anecdotal handouts; too early for measurable lead attribution                                    |
+| LinkedIn Company Page posts                  | 1 post                                      | Building follower base                                                                           |
+| Email outreach to existing contacts          | Not yet attempted                           | Deferred pending services launch — outreach for services likely higher-leverage than for £15 PDF |
+| Services tier on the site                    | Live 12 July 2026                           | Just launched; measurement window opens now                                                      |
+| LinkedIn services post                       | Draft prepared 12 July                      | Not yet published                                                                                |
 
 ---
 
 ## Open experiments (running)
 
+### Price test at £15 (guide)
+
+- **Started**: late June 2026
+- **Duration**: 30 days
+- **Change**: price dropped from £29 to £15; launch bonus removed
+- **Success criterion**: meaningful volume delta versus baseline (baseline: 2 friends-bought sales at £29 across ~4 weeks)
+- **Snap-back plan**: revert to £29 with launch bonus if no volume signal by day 30
+- **Confounding variable**: Google Ads paused during the test, so the £15 vs £29 A/B is not clean paid-side — the test measures organic + LinkedIn traffic response only
+
+### Services tier — inbound signal probe
+
+- **Started**: 12 July 2026
+- **Duration**: 3-week measurement window (target review ~2 August 2026)
+- **Channels feeding it**: LinkedIn organic (post pending), site organic, direct traffic from existing PDF buyers
+- **Success signal (any of the following)**:
+  - ≥3 Cal.com "Intro call — services" bookings
+  - ≥1 completed intro call with expressed interest in Delivery Pack or Train the Trainer
+  - ≥15 `Service Tier Clicked` events in Amplitude with `intake: calendar` (i.e. buyer engaged past the CTA)
+- **If signal present**: proceed with home restructure (services above the fold, guide as supporting product)
+- **If no signal**: pivot channel strategy toward warmer outbound (LinkedIn Sales Navigator, direct outreach to 20-30 target enablement leaders)
+
+## Closed experiments
+
 ### Google Ads Performance Max
 
-- **Started**: 2 June 2026
+- **Ran**: 2 June → early July 2026
 - **Geo**: UK + Ireland
-- **Daily budget**: 30 RON (~£5)
-- **Bidding**: Maximize Conversions (no Target CPA)
-- **Kill criteria** (review on 19 June 2026):
-  - Day 14 with 0 conversions paid + no positive A/B signal → pause
-  - Cumulative spend > 600 RON (~£100) with 0 conversions → pause
-  - CPC > 3 RON for 3 consecutive days → investigate
+- **Daily budget**: ~30 RON (~£5)
+- **Outcome**: **paused after kill criteria triggered.** 0 paid conversions across the full evaluation window despite reasonable CTR (climbed 1.27% → 2.17%) and dropping CPC (2.78 → 1.55 RON). Diagnosis: cold PMax traffic to a £29 impulse PDF without trust signals (testimonials, warm audience) is structurally difficult; the click-to-conversion gap was too large to close at the volume budgeted
+- **Learning captured for future campaigns**: warm audience first (LinkedIn organic + PDF buyers as retargeting seed), then paid. Search Ads on high-intent B2B keywords ("technical training consultancy UK", "VILT training delivery") is a more likely fit than PMax for the services tier
 
 ### Launch bonus banner A/B test (Amplitude G&S)
 
-- **Variant A** (control): "Learn more" → `/#faq` (educate before buy)
-- **Variant B** (treatment): "Claim my spot" → `/#pricing` (shorter path to buy)
-- **Targeting**: non-buyers (`Order Placed = 0`)
-- **Trigger**: page load, max 1× per session
-- **Success metric**: `Banner Shown → Banner Clicked → Order Placed` funnel, segmented by variant
-- **Min run time**: 14 days
+- **Ran**: 7 June to late June 2026
+- **Result**: 0 attributable conversions on either variant during runtime, so the pricing card was more of a bottleneck than the banner variant. Bonus and banner both retired for the £15 price test
 
 ---
 
@@ -198,50 +281,59 @@ Bundle introduction: £29 guide + 30-min coaching call for first 50 buyers. Deli
 - Iterative architecture choices (each milestone shippable independently)
 - Consent-gated tracking from day one (no GDPR retrofit)
 - Bot detection in Amplitude (`66.249.x.x` Google crawler IPs were polluting bounce rate data — once filtered, real human bounce rate looks healthy)
-- Quick recovery from Google Ads throttle after global tag install
+- Dead-click diagnosis via Amplitude session replay → `smoothScrollToAnchor` fix produced measurable engagement lift on anchor CTAs
+- Editorial iteration on services copy in-flight (three PRs #35/#36/#37 rewrote the tier positioning after each round of user review) — the multi-PR history is more valuable than a single "big" PR because git blame reads like a decision log
 - Decision to defer Resend / thank-you page / Developer Token until volume justifies
 
 **What didn't work / surprises**
 
-- LinkedIn launch post was not a silver bullet (but expected); organic content cadence is the real leverage and we haven't built it yet
+- LinkedIn launch post was not a silver bullet (expected); organic content cadence is the real leverage and cadence never reached the 1-2/week target
 - Initial AI-drafted LinkedIn post #2 fabricated content from a marketing tagline (caught and discarded before publishing — material for posts must come from real guide content)
 - Google Ads throttle was an unfamiliar pattern; took bot-pollution diagnosis to understand the apparent "high bounce rate"
-- Cold paid traffic to a £29 PDF without warm audience first is essentially impossible — needs trust signals (testimonials, content cadence, organic visibility) before paid scales
+- Cold paid traffic to a £29 PDF without warm audience first is essentially impossible — Google Ads paused after full 14-day window with 0 paid sales
+- The launch bonus (30-min coaching call for first 50 buyers) never had a chance to be tested at meaningful volume: no volume, no bonus claims, no signal on whether the bonus itself moved conversion
+- **The £15 price test has not (as of 12 July) produced meaningful volume either.** Interim signal: the problem is not the price at £29-vs-£15 granularity, it's the channel / audience gap
+- **Ops discipline miss.** PR #35 was merged before the copy-review commits (later PRs #36 and #37) landed on the branch. Production site briefly showed a version with copy the author had already asked to change. Guardrail added: agent to explicitly signal when a PR is ready-to-merge vs when new commits are in flight
 
 **Unresolved / open**
 
-- Will the launch bonus + A/B test actually move paid conversion?
-- Is the £29 PDF the actual product, or a lead magnet for future consulting?
-- Is "CrackVILT" too narrow as a brand if consulting expands beyond VILT?
-- What does the post-50-buyer model look like? Bonus closes; is the £29 PDF alone enough to drive cold conversion long-term?
+- Is the £15 PDF a viable cold-conversion product, or is it structurally too narrow for anonymous traffic and requires warm-audience seeding (LinkedIn cadence, testimonials, network)?
+- Will the services tier draw B2B inbound? Reviewing at ~2 August 2026 with 3 weeks of data
+- Is "CrackVILT" too narrow as a brand if consulting expands beyond VILT? The FAQ, services copy, and JSON-LD all lean into a broader "technical training / customer success / consulting" positioning that outgrows the "VILT" acronym
+- What does the eventual site information architecture look like — services-primary with guide as entry product, or guide-primary with services as expansion?
 
 ---
 
 ## Roadmap
 
-### Next 14 days (provisional, depends on data)
+### Next 14 days (from 12 July 2026)
 
-- Watch A/B test data converge
-- Day 14 (19 June 2026): Google Ads kill-or-continue decision
-- Real testimonials from 5-10 contacts who get the guide via outreach
-- LinkedIn post #2 (real content from guide, not fabricated)
+- **Publish LinkedIn services post** (draft prepared 12 July)
+- **Measure**: Amplitude services funnel (`Services Clicked` → `Service Tier Clicked` → Cal.com click), volume of `mailto:` clicks in the `intake: email` bucket, any Cal.com bookings
+- Continue LinkedIn cadence, ideally 1-2 posts per week — one on services, one on guide content
+- **Do NOT** create the Lemon Squeezy Strategy Call product yet — first 2-3 Strategy Calls run free via Cal.com as customer discovery
+
+### 15-30 days (services-inbound review window closes ~2 August 2026)
+
+- If ≥3 Cal.com bookings or comparable Amplitude signal → **restructure home page**: services section moves above the fold / above pricing, hero copy updated to reflect the two-product positioning, Strategy Call LS product created and direct-checkout enabled
+- If no signal → pivot channel strategy: LinkedIn Sales Navigator outreach to 20-30 target enablement leaders (UK/EU mid-market SaaS with in-house training teams), evaluate targeted Meta or LinkedIn Ads to warm audience
 
 ### 30-60 days
 
-- Continue LinkedIn cadence (1-2 posts/week)
-- Attend local meetup, distribute business cards
-- Iterate based on what the data says (more bonus framing? Drop paid? Pivot pricing?)
+- Second Google Ads campaign — **not** PMax this time, likely **Search Ads** on high-intent B2B keywords like "technical training consultancy UK", "VILT training delivery", "corporate training outsourcing". Search delivers warmer intent than PMax and matches the services buyer better than the £15-PDF buyer
+- Real testimonials from 5-10 contacts (services delivery, not PDF sales — a single completed Delivery Pack testimonial is worth more than 30 PDF reviews)
+- Consider whether "CrackVILT" needs a companion brand for consulting or whether the brand stretches naturally
 
 ### 60-90 days
 
-- Decision point: is the £29 PDF a viable cold-paid product on its own, or pivots to lead magnet + consulting funnel?
-- Consider second deliverable (extension chapter, follow-up newsletter, in-person workshop)
+- Repricing decision on the guide based on services traction (if services take off, guide can go back to £29 without pressure; if services don't take off, £15 or free lead-magnet becomes the plausible move)
+- Second deliverable evaluation: extension chapter, newsletter, or a live in-person workshop tied to the Train the Trainer format
 
 ### 6-12 months
 
-- Independent consulting offering aligned with CrackVILT brand
+- Independent consulting operation branded under CrackVILT (or successor brand if the acronym doesn't stretch)
 - Bilingual presence (LinkedIn organic in both Italian and English networks)
-- Possible second product (book, course, or training program)
+- Possible second product: book, cohort-based course, or a public "Train the Trainer" cohort programme (open registration, not just corporate B2B)
 
 ---
 
@@ -253,7 +345,9 @@ Bundle introduction: £29 guide + 30-min coaching call for first 50 buyers. Deli
 - **Domain**: `crackvilt.com` (Cloudflare DNS, DNS-only mode, no proxy)
 - **Email**: `info@crackvilt.com` → forwards to personal inbox via Cloudflare Email Routing
 - **Backup**: Git repository serves as code backup; Supabase has automatic point-in-time recovery on paid tier (currently free tier)
-- **Booking**: Cal.com personal account for the launch-bonus coaching calls
+- **Booking**: Cal.com personal account
+  - Original event: 30-min coaching call for launch bonus (now dormant during price test)
+  - New event (12 July 2026): "Intro call — services" — 15 min free, buffer 30 min, booking form asks company + tier of interest + training challenge. URL: `https://cal.com/giuliano-giannini/intro-call-services`. Exposed to the site via `NEXT_PUBLIC_CAL_URL`
 
 ---
 
