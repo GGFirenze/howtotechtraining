@@ -9,7 +9,7 @@ export function Hero() {
       <div className="mx-auto max-w-4xl text-center">
         <p className="border-border-soft bg-background-elevated text-foreground-muted mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-medium tracking-widest uppercase">
           <span aria-hidden className="bg-brand-emerald-bright size-1.5 rounded-full" />
-          The Technical Trainer&apos;s Playbook · 130 pages
+          Guide + Services for Technical Trainers
         </p>
 
         <h1 className="text-foreground text-4xl leading-[1.05] font-bold tracking-tight text-balance sm:text-5xl md:text-6xl lg:text-7xl">
@@ -19,8 +19,8 @@ export function Hero() {
 
         <p className="text-foreground-muted mx-auto mt-6 max-w-2xl text-lg leading-8 text-pretty sm:text-xl">
           The 130-page practical guide to designing and delivering Virtual Instructor-Led Training
-          that actually sticks. Built for engineers, dev advocates, technical trainers, and
-          consultants who teach live.
+          that actually sticks, plus hands-on services and training outsourcing for teams that want
+          to improve their delivery.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
@@ -73,7 +73,7 @@ export function Hero() {
         </div>
 
         <p className="text-foreground-subtle mt-8 text-xs">
-          One-time payment · Instant PDF download · No subscription · Free updates
+          Guide: £15 one-time · Services: free exploratory call
         </p>
       </div>
     </section>

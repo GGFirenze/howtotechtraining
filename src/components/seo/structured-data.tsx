@@ -76,7 +76,7 @@ export function HomeStructuredData() {
       {
         "@type": "Book",
         "@id": BOOK_ID,
-        name: "CrackVILT — Crack the secret to a successful VILT session",
+        name: "CrackVILT - Crack the secret to a successful VILT session",
         alternateName: "The Technical Trainer's Playbook",
         bookFormat: "https://schema.org/EBook",
         numberOfPages: 130,
