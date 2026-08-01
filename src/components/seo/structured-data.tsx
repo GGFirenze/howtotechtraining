@@ -106,8 +106,15 @@ export function HomeStructuredData() {
       /*
        * Consulting service tiers. We model them as schema.org Service
        * entities rather than Products because they are delivered live
-       * (not shipped) and priced per engagement. Each carries an Offer
-       * so eligible SERPs (and AI overviews) can surface the price.
+       * (not shipped) and priced per engagement.
+       *
+       * As of 1 August 2026, the site does not display fixed prices for
+       * these services. Every engagement starts with a free exploratory
+       * call, and pricing is scoped after that conversation. We therefore
+       * omit the fixed-price Offer blocks that were previously here. The
+       * Service entities remain so search engines and AI overviews can
+       * still surface the three engagement types, but they no longer claim
+       * a specific price that may not match the final invoice.
        *
        * `areaServed: "GB"` reflects the fact that the invoicing entity
        * is UK-based; delivery itself is remote-first, so international
@@ -123,16 +130,7 @@ export function HomeStructuredData() {
         areaServed: "GB",
         url: `${SITE_URL}/#services`,
         description:
-          "A focused 60-minute call to unblock one specific technical-training problem, whether a struggling session, a curriculum review, or the design of a first VILT. Includes a written recap of action items delivered within 48 hours.",
-        offers: {
-          "@type": "Offer",
-          price: "120.00",
-          priceCurrency: "GBP",
-          availability: "https://schema.org/InStock",
-          url: `${SITE_URL}/#services`,
-          seller: { "@id": ORGANIZATION_ID },
-          category: "ProfessionalService",
-        },
+          "A focused 60-minute call to unblock one specific technical-training problem, whether a struggling session, a curriculum review, or the design of a first VILT. Includes a written recap of action items delivered within 48 hours. Pricing is scoped after a free exploratory call.",
       },
       {
         "@type": "Service",
@@ -143,16 +141,7 @@ export function HomeStructuredData() {
         areaServed: "GB",
         url: `${SITE_URL}/#services`,
         description:
-          "Training outsourcing for companies with customers to train. I take one of your programmes and deliver it end-to-end (prep, session, follow-up) directly to your customers: scoping and content adaptation, one virtual workshop of up to a full day for 25 to 50 participants per session (larger cohorts split across multiple sessions), plus post-training resources.",
-        offers: {
-          "@type": "Offer",
-          price: "2500.00",
-          priceCurrency: "GBP",
-          availability: "https://schema.org/InStock",
-          url: `${SITE_URL}/#services`,
-          seller: { "@id": ORGANIZATION_ID },
-          category: "ProfessionalService",
-        },
+          "Training outsourcing for companies with customers to train. I take one of your programmes and deliver it end-to-end (prep, session, follow-up) directly to your customers: scoping and content adaptation, one virtual workshop of up to a full day for 25 to 50 participants per session (larger cohorts split across multiple sessions), plus post-training resources. Pricing is scoped after a free exploratory call.",
       },
       {
         "@type": "Service",
@@ -163,16 +152,7 @@ export function HomeStructuredData() {
         areaServed: "GB",
         url: `${SITE_URL}/#services`,
         description:
-          "A two-day live programme that trains up to six of your in-house trainers on the CrackVILT method to lift their CSAT and session effectiveness. Includes one 60-minute follow-up call at four weeks, a shadowing session on a real delivery with written feedback, and internal-use rights to the playbook and session templates.",
-        offers: {
-          "@type": "Offer",
-          price: "3000.00",
-          priceCurrency: "GBP",
-          availability: "https://schema.org/InStock",
-          url: `${SITE_URL}/#services`,
-          seller: { "@id": ORGANIZATION_ID },
-          category: "ProfessionalService",
-        },
+          "A two-day live programme that trains up to six of your in-house trainers on the CrackVILT method to lift their CSAT and session effectiveness. Includes one 60-minute follow-up call at four weeks, a shadowing session on a real delivery with written feedback, and internal-use rights to the playbook and session templates. Pricing is scoped after a free exploratory call.",
       },
     ],
   };

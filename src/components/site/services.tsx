@@ -1,15 +1,10 @@
 "use client";
 
-import {
-  BOOKING_FALLBACK_EMAIL,
-  buildEnquiryMailto,
-  getCalIntroUrl,
-  getStrategyCallCheckoutUrl,
-} from "@/lib/booking";
+import { BOOKING_FALLBACK_EMAIL, buildEnquiryMailto, getCalIntroUrl } from "@/lib/booking";
 import { trackEvent } from "@/lib/analytics/events";
 import type { ServiceTier } from "@/lib/analytics/events";
 
-type IntakeKind = "checkout" | "calendar" | "email";
+type IntakeKind = "calendar" | "email";
 
 type ResolvedIntake = {
   href: string;
@@ -24,27 +19,20 @@ type Tier = {
   id: ServiceTier;
   eyebrow: string;
   name: string;
-  price: string;
-  cadence: string;
   summary: string;
   bullets: string[];
-  paymentNote: string;
   highlighted?: boolean;
-  /**
-   * Resolve the click target at render time so the fallback chain
-   * (checkout → calendar → email) reflects whichever URLs happen to
-   * be configured in the current environment.
-   */
-  resolveIntake: (ctx: { cal: string | null; strategyCheckout: string | null }) => ResolvedIntake;
+  /** Subject used when the Cal.com link is not configured and the CTA falls back to email. */
+  mailtoSubject: string;
 };
+
+const COMMON_CTA_LABEL = "Book a free exploratory call";
 
 const TIERS: Tier[] = [
   {
     id: "strategy_call",
-    eyebrow: "Entry",
+    eyebrow: "One-to-one",
     name: "Strategy Call",
-    price: "£120",
-    cadence: "one hour",
     summary:
       "A focused 60-minute call to unblock one specific training problem, with a written recap.",
     bullets: [
@@ -53,38 +41,12 @@ const TIERS: Tier[] = [
       "Written recap with action items within 48 hours",
       "No prep call, just book and go",
     ],
-    paymentNote: "Payment upfront. Booking link in your receipt.",
-    resolveIntake: ({ cal, strategyCheckout }) => {
-      if (strategyCheckout) {
-        return {
-          href: strategyCheckout,
-          kind: "checkout",
-          ctaLabel: "Book & pay",
-          external: false,
-        };
-      }
-      if (cal) {
-        return {
-          href: cal,
-          kind: "calendar",
-          ctaLabel: "Book a Strategy Call",
-          external: true,
-        };
-      }
-      return {
-        href: buildEnquiryMailto("Strategy Call, booking enquiry"),
-        kind: "email",
-        ctaLabel: `Email ${BOOKING_FALLBACK_EMAIL}`,
-        external: false,
-      };
-    },
+    mailtoSubject: "Strategy Call, exploratory call booking",
   },
   {
     id: "delivery_pack",
     eyebrow: "Most requested",
     name: "VILT Delivery Pack",
-    price: "£2,500",
-    cadence: "per workshop",
     summary:
       "Training outsourcing. I take one of your programmes and deliver it (prep, session, follow-up) directly to your customers.",
     bullets: [
@@ -94,31 +56,13 @@ const TIERS: Tier[] = [
       "Scoping and content adaptation before delivery",
       "Materials: slide deck, recap quiz, post-training resources",
     ],
-    paymentNote: "50% deposit at signature, 50% on delivery. UK VAT applied at invoice.",
     highlighted: true,
-    resolveIntake: ({ cal }) => {
-      if (cal) {
-        return {
-          href: cal,
-          kind: "calendar",
-          ctaLabel: "Book an intro call",
-          external: true,
-        };
-      }
-      return {
-        href: buildEnquiryMailto("VILT Delivery Pack, scoping enquiry"),
-        kind: "email",
-        ctaLabel: `Email ${BOOKING_FALLBACK_EMAIL}`,
-        external: false,
-      };
-    },
+    mailtoSubject: "VILT Delivery Pack, exploratory call booking",
   },
   {
     id: "train_the_trainer",
-    eyebrow: "Premium",
+    eyebrow: "Programme",
     name: "Train the Trainer",
-    price: "£3,000",
-    cadence: "two-day programme",
     summary:
       "I train up to 6 of your in-house trainers on the CrackVILT method to lift your team's CSAT and session effectiveness.",
     bullets: [
@@ -128,30 +72,13 @@ const TIERS: Tier[] = [
       "1 shadowing session on a real delivery, with written feedback",
       "CrackVILT playbook, session templates, internal-use rights",
     ],
-    paymentNote:
-      "50% deposit at signature, 50% on completion. Travel and accommodation billed at cost when on-site.",
-    resolveIntake: ({ cal }) => {
-      if (cal) {
-        return {
-          href: cal,
-          kind: "calendar",
-          ctaLabel: "Book an intro call",
-          external: true,
-        };
-      }
-      return {
-        href: buildEnquiryMailto("Train the Trainer, scoping enquiry"),
-        kind: "email",
-        ctaLabel: `Email ${BOOKING_FALLBACK_EMAIL}`,
-        external: false,
-      };
-    },
+    mailtoSubject: "Train the Trainer, exploratory call booking",
   },
 ];
 
 export function Services() {
   const cal = getCalIntroUrl();
-  const strategyCheckout = getStrategyCallCheckoutUrl();
+  const isCalendarConfigured = cal != null;
 
   const handleTierClick = (tier: Tier, intake: ResolvedIntake) => {
     trackEvent("Service Tier Clicked", { tier: tier.id, intake: intake.kind });
@@ -171,14 +98,23 @@ export function Services() {
             </span>
           </h2>
           <p className="text-foreground-muted mt-6 text-lg leading-8">
-            The guide is the playbook. When you need someone to run the workshop, coach your
-            trainers, or unblock one specific session, pick the tier that fits and book a call.
+            Every service starts with a free exploratory call. We talk about your team, your
+            training challenge, and what a good-fit engagement looks like. Pricing is discussed
+            after we understand the scope.
           </p>
         </div>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {TIERS.map((tier) => {
-            const intake = tier.resolveIntake({ cal, strategyCheckout });
+            const intake: ResolvedIntake = isCalendarConfigured
+              ? { href: cal, kind: "calendar", ctaLabel: COMMON_CTA_LABEL, external: true }
+              : {
+                  href: buildEnquiryMailto(tier.mailtoSubject),
+                  kind: "email",
+                  ctaLabel: `Email ${BOOKING_FALLBACK_EMAIL}`,
+                  external: false,
+                };
+
             const isFeatured = tier.highlighted === true;
 
             return (
@@ -205,11 +141,6 @@ export function Services() {
                 <h3 className="text-foreground mt-4 text-2xl leading-tight font-bold tracking-tight">
                   {tier.name}
                 </h3>
-
-                <div className="mt-4 flex items-baseline gap-2">
-                  <span className="text-foreground text-4xl font-bold">{tier.price}</span>
-                  <span className="text-foreground-muted text-sm font-medium">{tier.cadence}</span>
-                </div>
 
                 <p className="text-foreground-muted mt-4 text-sm leading-relaxed">{tier.summary}</p>
 
@@ -250,7 +181,7 @@ export function Services() {
                     {intake.ctaLabel}
                   </a>
                   <p className="text-foreground-subtle text-center text-xs leading-relaxed">
-                    {tier.paymentNote}
+                    Free 15-minute exploratory call. No commitment required.
                   </p>
                 </div>
               </article>
@@ -259,7 +190,7 @@ export function Services() {
         </div>
 
         <p className="text-foreground-subtle mx-auto mt-12 max-w-3xl text-center text-sm leading-relaxed">
-          Prefer to talk before committing? Email{" "}
+          Prefer email? Write to{" "}
           <a
             href={buildEnquiryMailto("CrackVILT services, general enquiry")}
             className="text-foreground-muted hover:text-foreground underline underline-offset-4 transition-colors"
