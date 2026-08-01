@@ -44,12 +44,12 @@ export type EventMap = {
   "Service Tier Clicked": {
     tier: ServiceTier;
     /**
-     * How the CTA was resolved at click time. Lets us split funnels for
-     * "hot" tiers (checkout / calendar loaded) vs. "cold" tiers (email
-     * fallback because the URL was not yet configured), which is a
-     * meaningful distinction during early launch.
+     * How the CTA was resolved at click time. All service tiers now
+     * route to a single free Cal.com exploratory call, so 'calendar'
+     * is the normal path. 'email' is the fallback when the Cal.com
+     * link is not configured.
      */
-    intake: "checkout" | "calendar" | "email";
+    intake: "calendar" | "email";
   };
 };
 
