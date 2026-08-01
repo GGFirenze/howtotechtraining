@@ -33,7 +33,7 @@ export function Promise() {
             and only leaves 5 minutes for the live demo.&rdquo;
           </blockquote>
           <figcaption className="text-foreground-subtle mt-4 text-sm">
-            — From the introduction
+            - From the introduction
           </figcaption>
         </figure>
       </div>

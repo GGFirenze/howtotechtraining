@@ -19,8 +19,8 @@ export type ResolvedProduct = {
 };
 
 const DISPLAY_NAME_FALLBACK: Record<ProductType, string> = {
-  "crackvilt-guide": "CrackVILT — the guide",
-  "strategy-call": "Strategy Call — 60 minutes",
+  "crackvilt-guide": "CrackVILT - the guide",
+  "strategy-call": "Strategy Call - 60 minutes",
   unknown: "Unknown product",
 };
 

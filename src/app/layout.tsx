@@ -22,11 +22,11 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://crackvilt.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "CrackVILT — Crack the secret to a successful VILT session",
-    template: "%s · CrackVILT",
+    default: "CrackVILT - Crack the secret to a successful VILT session",
+    template: "%s - CrackVILT",
   },
   description:
-    "The practical guide to designing and delivering Virtual Instructor-Led Training that actually sticks. By Giuliano Giannini.",
+    "The practical guide to VILT that actually sticks, plus hands-on services and training outsourcing for teams. By Giuliano Giannini.",
   applicationName: "CrackVILT",
   authors: [{ name: "Giuliano Giannini" }],
   creator: "Giuliano Giannini",
@@ -42,16 +42,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "CrackVILT",
-    title: "CrackVILT — Crack the secret to a successful VILT session",
+    title: "CrackVILT - Crack the secret to a successful VILT session",
     description:
-      "The practical guide to designing and delivering Virtual Instructor-Led Training that actually sticks.",
+      "The practical guide to VILT that actually sticks, plus hands-on services and training outsourcing for teams. By Giuliano Giannini.",
     url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
-    title: "CrackVILT — Crack the secret to a successful VILT session",
+    title: "CrackVILT - Crack the secret to a successful VILT session",
     description:
-      "The practical guide to designing and delivering Virtual Instructor-Led Training that actually sticks.",
+      "The practical guide to VILT that actually sticks, plus hands-on services and training outsourcing for teams. By Giuliano Giannini.",
   },
   robots: {
     index: true,

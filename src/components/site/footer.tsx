@@ -44,7 +44,7 @@ export function Footer() {
     <footer className="border-border-subtle bg-background-elevated border-t px-6 py-12 sm:px-10 sm:py-16">
       <div className="mx-auto flex max-w-6xl flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex flex-col gap-4">
-          <Link href="/" aria-label="CrackVILT — home" className="inline-flex">
+          <Link href="/" aria-label="CrackVILT - home" className="inline-flex">
             <Logo width={140} />
           </Link>
           <p className="text-foreground-muted max-w-sm text-sm leading-relaxed">

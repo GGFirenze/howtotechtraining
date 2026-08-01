@@ -31,7 +31,7 @@ const QUESTIONS: QA[] = [
   },
   {
     q: "Do you offer team licences or hands-on help?",
-    a: 'Yes. Beyond the guide, I offer three service tiers for teams — a one-hour Strategy Call, a full VILT Delivery Pack where I run the workshop for you, and a Train the Trainer programme for in-house enablement teams. See the <a href="#services" class="text-brand-cyan-bright hover:text-foreground underline underline-offset-4">Working with Giuliano</a> section above, or email info@crackvilt.com for bulk PDF access and bespoke curricula.',
+    a: 'Yes. Beyond the guide, I offer three service tiers for teams: a one-hour Strategy Call, a full VILT Delivery Pack where I run the workshop for you, and a Train the Trainer programme for in-house enablement teams. See the <a href="#services" class="text-brand-cyan-bright hover:text-foreground underline underline-offset-4">Working with Giuliano</a> section above, or email info@crackvilt.com for bulk PDF access and bespoke curricula.',
   },
 ];
 
